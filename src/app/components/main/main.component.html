@@ -1,0 +1,11 @@
+<div class="d-flex" id="wrapper">
+  <app-sidebar [(active)]="active" (url)="go($event)"></app-sidebar>
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-light bg-light border-bottom">
+      <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+    <iframe [src]="src" class="frame"></iframe>
+  </div>
+</div>
