@@ -1,1 +1,10 @@
-<p>sidebar works!</p>
+<div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="{'active': active}">
+    <div class="sidebar-heading">Páginas</div>
+    <div class="list-group list-group-flush">
+      <ul>
+        <li *ngFor="let option of options">
+          <a (click)="goto(option)">{{option.text}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>

@@ -10,7 +10,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
     SidebarComponent
   ],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.css'
+  styleUrl: './main.component.scss'
 })
 export class MainComponent {
 
