@@ -1,11 +1,19 @@
-<div class="d-flex" id="wrapper">
-  <app-sidebar [(active)]="active" (url)="go($event)"></app-sidebar>
-  <div id="page-content-wrapper">
-    <nav class="navbar navbar-light bg-light border-bottom">
-      <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggle()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-    <iframe [src]="src" class="frame"></iframe>
+<div class="d-flex">
+  <div class="d-flex" id="wrapper">
+    <app-sidebar [(active)]="active" (url)="go($event)"></app-sidebar>
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-light bg-light border-bottom d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggle()">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <img src="https://www.indec.gob.ar/Images_WEBINDEC/Logo/Logo_Indec.png" alt="Logo INDEC" class="indec-logo">
+        </div>
+        <h1 class="navbar-title">Comparador de Precios</h1>
+      </nav>
+      <div class="product-list">
+        <app-product *ngFor="let product of products" [product]="product"></app-product>
+      </div>
+    </div>
   </div>
 </div>

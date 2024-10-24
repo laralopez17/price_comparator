@@ -2,16 +2,39 @@
   min-width: 100vw;
 }
 
-.frame {
-  width: 100vw;
-  height: calc(100vh - 60px);
-  position: absolute;
-  overflow: hidden;
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 30px;
+  justify-content: center;
 }
 
-@media (min-width: 450px) {
-  #page-content-wrapper {
-      min-width: 0;
-      width: 100%;
-  }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 10px 15px;
+}
+
+.navbar .navbar-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.5rem; 
+  color: #343a40;
+  margin: 0;
+  font-weight: 700;
+}
+
+
+.indec-logo {
+  width: 200px;
+  height: auto;
+  margin-right: 90px;
+}
+
+
+.navbar-toggler {
+  margin-right: 15px;
 }
