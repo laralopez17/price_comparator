@@ -10,7 +10,7 @@ import { MainComponent } from "./components/main/main.component";
     MainComponent
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'proyecto-final';
