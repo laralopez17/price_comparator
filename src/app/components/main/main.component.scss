@@ -1,0 +1,40 @@
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 30px;
+  justify-content: center;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 10px 15px;
+}
+
+.navbar .navbar-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.5rem; 
+  color: #343a40;
+  margin: 0;
+  font-weight: 700;
+}
+
+
+.indec-logo {
+  width: 200px;
+  height: auto;
+  margin-right: 90px;
+}
+
+
+.navbar-toggler {
+  margin-right: 15px;
+}

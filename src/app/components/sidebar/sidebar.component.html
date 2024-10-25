@@ -1,1 +1,23 @@
-<p>sidebar works!</p>
+<div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="{'active': active}">
+  <div class="sidebar-heading">Categorías</div>
+  <div class="list-group list-group-flush">
+    <ul>
+      <li *ngFor="let heading of options" class="dropdown">
+        <!-- El primer nivel del dropdown -->
+        <a class="dropdown-toggle" role="button">{{ heading.headingName }}</a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let category of heading.categories" class="dropdown-submenu">
+            <!-- Subcategorías -->
+            <a class="dropdown-toggle" role="button">{{ category.categoryName }}</a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let productType of category.productTypes">
+                <!-- Tipos de productos -->
+                <a class="dropdown-item">{{ productType.productTypeName }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

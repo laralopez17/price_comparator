@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IOption } from '../../api/models/i-option';
+import { IHeading } from '../../api/models/i-heading';
 import { DataResource } from '../../api/resources/data-resource';
 
 @Component({
@@ -14,13 +14,13 @@ export class SidebarComponent {
 
   @Input() active: boolean = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() url: EventEmitter<IOption> = new EventEmitter<IOption>();
+  @Output() url: EventEmitter<IHeading> = new EventEmitter<IHeading>();
 
-  get options(): IOption[] {
-    return DataResource.options;
+  get options(): IHeading[] {
+    return DataResource.headings;
   }
 
-  goto(option: IOption): void {
+  goto(option: IHeading): void {
     this.url.emit(option);
     this.activeChange.emit(false);
   }

@@ -1,0 +1,14 @@
+<div class="product-card">
+    <div class="product-image">
+      <img [src]="product.productImage || 'assets/placeholder.png'" alt="{{ product.productName }}">
+    </div>
+    <div class="product-info">
+      <h3>{{ product.productName }}</h3>
+      <p>{{ product.productDesc || 'No description available' }}</p>
+      <p>Marca: {{ product.productBrandName }}</p>
+    </div>
+    <div class="product-actions">
+      <button class="btn btn-primary">Agregar al carrito</button>
+    </div>
+  </div>
+  
