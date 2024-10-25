@@ -23,6 +23,7 @@ export class MainComponent {
   active: boolean = false;
   src!: SafeResourceUrl;
   products: IProduct[] = [];
+  selectedOptions: any = {};
 
   constructor(private _sanitizer: DomSanitizer) {
     this.products = DataResource.products;
@@ -32,8 +33,11 @@ export class MainComponent {
     this.active = !this.active;
   }
 
-  go(option: IHeading): void {
-    this.src = this._sanitizer.bypassSecurityTrustResourceUrl(`/${option.headingName}`);
-  } 
+  // Maneja los cambios de selección desde el sidebar
+  onSelectionChange(selectedOptions: any): void {
+    this.selectedOptions = selectedOptions;
+    console.log('Selección actualizada:', this.selectedOptions);
+    // Aquí puedes aplicar la lógica para filtrar productos o manejar los cambios
+  }
 
 }
