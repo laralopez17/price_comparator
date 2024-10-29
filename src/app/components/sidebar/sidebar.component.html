@@ -2,17 +2,23 @@
   <div class="sidebar-heading">Categorías</div>
   <div class="list-group list-group-flush">
     <ul>
-      <li *ngFor="let heading of options" class="dropdown">
-        <!-- El primer nivel del dropdown -->
-        <a class="dropdown-toggle" role="button">{{ heading.headingName }}</a>
+      <li *ngFor="let heading of headings" class="dropdown">
+        <!-- El primer nivel del dropdown (heading) -->
+        <a class="dropdown-toggle" role="button" (click)="onHeadingSelect(heading.headingId)">
+          {{ heading.headingName }}
+        </a>
         <ul class="dropdown-menu">
           <li *ngFor="let category of heading.categories" class="dropdown-submenu">
             <!-- Subcategorías -->
-            <a class="dropdown-toggle" role="button">{{ category.categoryName }}</a>
+            <a class="dropdown-toggle" role="button" (click)="onCategorySelect(heading.headingId, category.categoryId)">
+              {{ category.categoryName }}
+            </a>
             <ul class="dropdown-menu">
               <li *ngFor="let productType of category.productTypes">
                 <!-- Tipos de productos -->
-                <a class="dropdown-item">{{ productType.productTypeName }}</a>
+                <a class="dropdown-item" (click)="onProductTypeSelect(heading.headingId, category.categoryId, productType.productTypeId)">
+                  {{ productType.productTypeName }}
+                </a>
               </li>
             </ul>
           </li>
