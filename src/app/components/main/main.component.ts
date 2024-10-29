@@ -22,11 +22,11 @@ import { ProductDropdownComponent } from '../product-dropdown/product-dropdown.c
 })
 export class MainComponent {
 
-  active: boolean = false;
-  src!: SafeResourceUrl;
+  activeSideBar: boolean = false;
+  activeDropDown: boolean = false;
   products: IProduct[] = [];
   selectedOptions: any = {};
-  hasSelection: boolean = false; // Nueva propiedad para controlar si se ha hecho una selección
+  hasSelection: boolean = false; 
 
 
   constructor(private _sanitizer: DomSanitizer) {

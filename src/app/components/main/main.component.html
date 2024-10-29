@@ -20,8 +20,11 @@
         <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleDropDown()">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <app-product-dropdown [(active)]="activeDropDown"></app-product-dropdown>
       </nav>
-      <div class="product-list">
+      
+      <!-- Mostrar productos solo si hay productos filtrados y hay una selección -->
+      <div class="product-list" *ngIf="hasSelection && products.length > 0">
         <app-product *ngFor="let product of products" [product]="product"></app-product>
       </div>
 
