@@ -6,6 +6,7 @@ import { ProductComponent } from '../product/product.component';
 import { IProduct } from '../../api/models/i-products';
 import { DataResource } from '../../api/resources/data-resource';
 import { CommonModule } from '@angular/common';
+import { ProductDropdownComponent } from '../product-dropdown/product-dropdown.component';
 
 @Component({
   selector: 'app-main',
@@ -13,14 +14,15 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     SidebarComponent,
-    ProductComponent
+    ProductComponent,
+    ProductDropdownComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-
-  active: boolean = false;
+  activeSideBar: boolean = false;
+  activeDropDown: boolean = false;
   src!: SafeResourceUrl;
   products: IProduct[] = [];
 
@@ -28,8 +30,12 @@ export class MainComponent {
     this.products = DataResource.products;
   }
 
-  toggle(): void {
-    this.active = !this.active;
+  toggleSideBar(): void {
+    this.activeSideBar = !this.activeSideBar;
+  }
+
+  toggleDropDown() {
+    this.activeDropDown = !this.activeDropDown;
   }
 
   go(option: IHeading): void {

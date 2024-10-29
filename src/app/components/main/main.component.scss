@@ -10,23 +10,21 @@
   justify-content: center;
 }
 
-
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   padding: 10px 15px;
 }
 
 .navbar .navbar-title {
   flex-grow: 1;
   text-align: center;
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
   color: #343a40;
   margin: 0;
   font-weight: 700;
 }
-
 
 .indec-logo {
   width: 200px;
@@ -34,7 +32,25 @@
   margin-right: 90px;
 }
 
-
 .navbar-toggler {
   margin-right: 15px;
+}
+
+/* Estilos para el dropdown en el lado derecho */
+app-product-dropdown {
+  position: absolute;
+  top: 56px; // Ajusta para alinearse con la navbar
+  right: 0; // Coloca el dropdown en el extremo derecho de la pantalla
+  z-index: 1050;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+  
+  &.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  &.inactive {
+    opacity: 0;
+    transform: translateX(100%); // Mueve el dropdown fuera de la vista hacia la derecha
+  }
 }

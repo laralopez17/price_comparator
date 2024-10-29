@@ -1,0 +1,23 @@
+<div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="{'active': active}">
+  <div class="sidebar-heading">Productos Seleccionados</div>
+  <div class="list-group list-group-flush">
+    <ul>
+      <li *ngFor="let product of products" class="product-item d-flex justify-content-between align-items-center">
+        <!-- Mostrar nombre, marca y ID del producto -->
+        <a class="dropdown-item">
+          <strong>Marca:</strong> {{ product.productBrandName }} <br>
+          <strong>Nombre:</strong> {{ product.productName }} <br>
+          <strong>ID:</strong> {{ product.productId }}
+        </a>
+        <!-- Botón de tacho de basura -->
+        <button class="btn btn-danger btn-sm" (click)="removeProduct(product)">
+          X
+        </button>
+      </li>
+    </ul>
+    <!-- Botón de confirmar -->
+    <div class="text-center mt-3">
+      <button class="btn btn-primary" (click)="confirmSelection()">Confirmar</button>
+    </div>
+  </div>
+</div>
