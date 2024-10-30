@@ -7,9 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
@@ -17,42 +15,30 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
 
   constructor(private router: Router) {}
+
   @Input() active: boolean = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectionChanged: EventEmitter<any> = new EventEmitter<any>();
+  
+  headings: IHeading[] = DataResource.headings;
 
-  get headings(): IHeading[] {
-    return DataResource.headings;
-  }
-
-   // Objeto para mantener las selecciones
-   selectedOptions: any = {
+  // Interfaz más clara para selectedOptions
+  selectedOptions: { headingId: number | null, categoryId: number | null, productTypeId: number | null } = {
     headingId: null,
     categoryId: null,
     productTypeId: null
   };
 
-  // Este método se llamará al seleccionar un heading
-  onHeadingSelect(headingId: number): void {
-    this.selectedOptions.headingId = headingId;
-    this.selectedOptions.categoryId = null; // Limpiamos selecciones inferiores
-    this.selectedOptions.productTypeId = null;
-    this.emitSelection();
-  }
+  // Mapeo de headings para acceso rápido
+  private headingMap = new Map(this.headings.map(h => [h.headingId, h]));
 
-  // Este método se llamará al seleccionar una categoría
-  onCategorySelect(headingId: number, categoryId: number): void {
-    this.selectedOptions.headingId = headingId;
-    this.selectedOptions.categoryId = categoryId;
-    this.selectedOptions.productTypeId = null; // Limpiamos selección de tipo de producto
-    this.emitSelection();
-  }
-
-  // Este método se llamará al seleccionar un tipo de producto
-  onProductTypeSelect(headingId: number, categoryId: number, productTypeId: number): void {
-    this.selectedOptions.headingId = headingId;
-    this.selectedOptions.categoryId = categoryId;
-    this.selectedOptions.productTypeId = productTypeId;
+  onSelect(headingId: number, categoryId?: number, productTypeId?: number): void {
+    // Si no se proporcionan categoryId o productTypeId, se asigna null
+    this.selectedOptions = { 
+      headingId: headingId, 
+      categoryId: categoryId ?? null, 
+      productTypeId: productTypeId ?? null 
+    };
     this.emitSelection();
   }
 
@@ -65,17 +51,19 @@ export class SidebarComponent {
   getRouteSegments(): string[] {
     const routeSegments = ['main'];
 
-    const heading = this.headings.find(h => h.headingId === this.selectedOptions.headingId);
-    if (heading) {
-      routeSegments.push(this.toKebabCase(heading.headingName));
+    // Lógica simplificada para extraer los segmentos de la ruta
+    let currentHeading = this.headingMap.get(this.selectedOptions.headingId!);
 
-      const category = heading.categories.find(c => c.categoryId === this.selectedOptions.categoryId);
-      if (category) {
-        routeSegments.push(this.toKebabCase(category.categoryName));
+    if (currentHeading) {
+      routeSegments.push(this.toKebabCase(currentHeading.headingName));
+      const currentCategory = currentHeading.categories.find(c => c.categoryId === this.selectedOptions.categoryId);
+      
+      if (currentCategory) {
+        routeSegments.push(this.toKebabCase(currentCategory.categoryName));
+        const currentProductType = currentCategory.productTypes.find(p => p.productTypeId === this.selectedOptions.productTypeId);
 
-        const productType = category.productTypes.find(p => p.productTypeId === this.selectedOptions.productTypeId);
-        if (productType) {
-          routeSegments.push(this.toKebabCase(productType.productTypeName));
+        if (currentProductType) {
+          routeSegments.push(this.toKebabCase(currentProductType.productTypeName));
         }
       }
     }
