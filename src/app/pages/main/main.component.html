@@ -22,18 +22,11 @@
         </button>
         <app-product-dropdown [(active)]="activeDropDown"></app-product-dropdown>
       </nav>
-      
-      <!-- Mostrar productos solo si hay productos filtrados y hay una selección -->
-      <div class="product-list" *ngIf="hasSelection && products.length > 0">
-        <app-product *ngFor="let product of products" [product]="product"></app-product>
-      </div>
 
-      <!-- Mensaje opcional para cuando no hay productos o no hay selección -->
-      <div *ngIf="!hasSelection">
-        <p>Por favor selecciona una categoría para ver los productos.</p>
-      </div>
-      <div *ngIf="hasSelection && products.length === 0">
-        <p>No hay productos disponibles para la selección actual.</p>
+      <!-- Parte dinámica -->
+      <div class="content">
+        <app-product-list [products]="products" [hasSelection]="hasSelection"></app-product-list>
+        <router-outlet></router-outlet>
       </div>
 
     </div>

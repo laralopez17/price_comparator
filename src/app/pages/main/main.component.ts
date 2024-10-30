@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { IHeading } from '../../api/models/i-heading';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { ProductComponent } from '../product/product.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { IProduct } from '../../api/models/i-products';
 import { DataResource } from '../../api/resources/data-resource';
 import { CommonModule } from '@angular/common';
-import { ProductDropdownComponent } from '../product-dropdown/product-dropdown.component';
+import { ProductDropdownComponent } from '../../components/product-dropdown/product-dropdown.component';
+import { RouterModule } from '@angular/router';
+import { ProductListComponent } from '../product-list/product-list.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
+    RouterModule,
     CommonModule,
     SidebarComponent,
-    ProductComponent,
-    ProductDropdownComponent
+    ProductDropdownComponent,
+    ProductListComponent 
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
@@ -27,7 +28,6 @@ export class MainComponent {
   products: IProduct[] = [];
   selectedOptions: any = {};
   hasSelection: boolean = false; 
-
 
   constructor(private _sanitizer: DomSanitizer) {
     this.products = DataResource.products;
@@ -45,6 +45,7 @@ export class MainComponent {
   onSelectionChange(selectedOptions: any): void {
     this.selectedOptions = selectedOptions;
     this.hasSelection = !!(this.selectedOptions.headingId || this.selectedOptions.categoryId || this.selectedOptions.productTypeId);
+    this.products = this.hasSelection ? DataResource.products : [];
     console.log('Selección actualizada:', this.selectedOptions);
   }
 }

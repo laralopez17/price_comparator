@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IHeading } from '../../api/models/i-heading';
 import { DataResource } from '../../api/resources/data-resource';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,8 +13,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
+
 export class SidebarComponent {
 
+  constructor(private router: Router) {}
   @Input() active: boolean = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectionChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -53,8 +56,35 @@ export class SidebarComponent {
     this.emitSelection();
   }
 
-  // Emitimos las selecciones actuales
   emitSelection(): void {
+    const routeSegments = this.getRouteSegments();
+    this.router.navigate(routeSegments);
     this.selectionChanged.emit(this.selectedOptions);
+  }
+
+  getRouteSegments(): string[] {
+    const routeSegments = ['main'];
+
+    const heading = this.headings.find(h => h.headingId === this.selectedOptions.headingId);
+    if (heading) {
+      routeSegments.push(this.toKebabCase(heading.headingName));
+
+      const category = heading.categories.find(c => c.categoryId === this.selectedOptions.categoryId);
+      if (category) {
+        routeSegments.push(this.toKebabCase(category.categoryName));
+
+        const productType = category.productTypes.find(p => p.productTypeId === this.selectedOptions.productTypeId);
+        if (productType) {
+          routeSegments.push(this.toKebabCase(productType.productTypeName));
+        }
+      }
+    }
+
+    return routeSegments;
+  }
+
+  // Convierte un nombre a kebab-case
+  toKebabCase(name: string): string {
+    return name.toLowerCase().replace(/\s+/g, '-');
   }
 }
