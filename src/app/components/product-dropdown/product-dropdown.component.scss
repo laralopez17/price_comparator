@@ -1,7 +1,10 @@
 #sidebar-wrapper {
   min-height: 100vh;
   margin-right: -27rem; // Posición inicial (oculto)
-  transition: margin 0.25s ease-out; // Transición suave para el cambio de estado
+  transition: margin .25s ease-out;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;// Transición suave para el cambio de estado
   background-color: #1c5a97; // Color de fondo del sidebar
   transform: translateY(50px); // Desplazamiento inicial hacia abajo
 
