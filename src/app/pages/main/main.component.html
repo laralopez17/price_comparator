@@ -20,7 +20,7 @@
         <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleDropDown()">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <app-product-dropdown [(active)]="activeDropDown"></app-product-dropdown>
+        <app-product-dropdown *ngIf="activeDropDown" [(active)]="activeDropDown"></app-product-dropdown>
       </nav>
 
       <!-- Parte dinámica -->
