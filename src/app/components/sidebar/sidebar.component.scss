@@ -1,24 +1,28 @@
 #sidebar-wrapper {
+  position: fixed; // Fija la barra lateral para que se superponga en lugar de desplazar el contenido
+  top: 65px;
   min-height: 100vh;
-  margin-left: -17rem;
-  transition: margin .25s ease-out;
+  margin-left: -17rem; // Oculto inicialmente
+  transition: margin 0.25s ease-out;
   background-color: #1c5a97;
-
-
+  transform: translateY(50px);
+  
   &.active {
-    margin-left: 0;
+    margin-left: 0; // Cuando está activo, muestra el sidebar
     padding: 1rem;
+    transform: translateY(35px);
   }
 
   .sidebar-heading {
     padding: 1.5rem;
     font-size: 1.5rem;
     text-align: center;
-    color: #1c5a97;
+    color: #ffffff;
+    background-color: #1c5a97;
   }
 
   .list-group {
-    width: 17rem;
+    width: 100%; // Asegura que el ancho del contenido se adapte al sidebar
   }
 
   a {
@@ -68,6 +72,6 @@
   }
 
   .dropdown-item {
-    white-space: nowrap; 
+    white-space: nowrap;
   }
 }

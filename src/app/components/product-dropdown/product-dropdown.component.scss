@@ -1,80 +1,80 @@
 #sidebar-wrapper {
   min-height: 100vh;
   margin-right: -27rem; // Posición inicial (oculto)
-  transition: margin 0.25s ease-out; // Transición suave para el cambio de estado
-  background-color: #1c5a97; // Color de fondo del sidebar
-  transform: translateY(50px); // Desplazamiento inicial hacia abajo
+  transition: margin 0.25s ease-out;
+  background-color: #1c5a97;
+  transform: translateY(50px);
 
   &.active {
-    margin-right: 0; // Cuando está activo, muestra el sidebar
-    padding: 1rem; // Espaciado interno
-    transform: translateY(35px); // Regresar a la posición original
+    margin-right: 0;
+    padding: 1rem;
+    transform: translateY(35px);
   }
 
   .sidebar-heading {
     padding: 1.5rem;
     font-size: 1.5rem;
     text-align: center;
-    color: #ffffff; // Color del texto del encabezado
-    background-color: #1c5a97; // Asegurar que el color del fondo coincida
+    color: #ffffff;
+    background-color: #1c5a97;
   }
 
   .list-group {
-    width: 17rem; // Ancho del grupo de listas
+    width: 17rem;
   }
 
   ul {
-    list-style: none; // Sin viñetas
-    padding-left: 0; // Sin padding
+    list-style: none;
+    padding-left: 0;
   }
 
   .product-item {
-    display: flex; // Usar flexbox para alinear elementos
-    justify-content: space-between; // Espaciado entre los elementos
-    align-items: center; // Alinear verticalmente
-    padding: 0.75rem 1.25rem; // Espaciado interno
-    cursor: pointer; // Cambiar el cursor al pasar
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
 
     &:hover {
-      background-color: #f1f1f1; // Color al pasar el mouse
-      font-weight: bold; // Negrita al pasar el mouse
+      background-color: #f1f1f1;
+      font-weight: bold;
     }
 
     a {
-      color: rgb(0, 0, 0); // Color del texto
-      text-decoration: none; // Sin subrayado
-      flex-grow: 1; // Ocupar espacio disponible
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      flex-grow: 1;
     }
 
     button {
-      border: none; // Sin borde
-      background-color: transparent; // Fondo transparente
-      color: #dc3545; // Color para la "X"
-      font-size: 1.5rem; // Tamaño de fuente de la "X"
-      cursor: pointer; // Cambiar cursor al pasar el mouse
-      transition: color 0.2s; // Transición suave al cambiar color
+      border: none;
+      background-color: transparent;
+      color: #dc3545;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s;
 
       &:hover {
-        color: #c82333; // Color de la "X" al pasar el mouse
+        color: #c82333;
       }
     }
   }
 
   .text-center {
-    padding: 1rem; // Espaciado interno
+    padding: 1rem;
   }
 
   button.btn-primary {
-    width: 100%; // Botón de confirmar ocupa todo el ancho
-    padding: 0.5rem; // Espaciado interno
-    font-size: 1rem; // Tamaño de fuente
-    border-radius: 0.25rem; // Bordes redondeados
-    background-color: #007bff; // Color del botón
-    color: white; // Color del texto del botón
-    transition: background-color 0.2s; // Transición suave al cambiar fondo
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.2s;
 
     &:hover {
-      background-color: #0056b3; // Color de fondo al pasar el mouse
+      background-color: #0056b3;
     }
   }
 }
