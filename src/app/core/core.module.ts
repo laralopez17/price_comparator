@@ -10,9 +10,6 @@ import { MessageDialogComponent } from './layout/message-dialog/message-dialog.c
   imports: [
     CommonModule,
     NgbModalModule
-  ],
-  exports: [
-    MessageDialogComponent
   ]
 })
 export class CoreModule { }

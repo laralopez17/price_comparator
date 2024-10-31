@@ -12,14 +12,15 @@ export class AppErrorHandler implements ErrorHandler {
 
     handleError(error: any): void {
       let message: IMessage;
-    
+  
       if (!this._service) {
         this._service = this._injector.get(AppMessageService);
       }
-    
+  
       if(error.rejection) {
         error = error.rejection;
       }
+      
       if(error.body) {
         if(error.body.message) {
           message = { text: error.body.message, num: error.status };
@@ -45,9 +46,10 @@ export class AppErrorHandler implements ErrorHandler {
       else {
         message = { text: error, num: error.status };
       }
-    
+      
       !environment.production ? console.log(error) : null;
-    
+  
       setTimeout(() => this._service?.showMessage(message), 0);
     }
+
 }

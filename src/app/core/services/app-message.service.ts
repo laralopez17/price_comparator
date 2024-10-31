@@ -12,6 +12,7 @@ export class AppMessageService {
 
   showMessage(message: IMessage): void {
     const modalRef = this._modal.open(MessageDialogComponent);
-    modalRef.componentInstance.message = message;          
+          modalRef.componentInstance.message = message;          
   }
+
 }
