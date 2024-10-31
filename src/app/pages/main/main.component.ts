@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { IProduct } from '../../api/models/i-products';
