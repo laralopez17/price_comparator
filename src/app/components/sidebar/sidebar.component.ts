@@ -22,7 +22,6 @@ export class SidebarComponent {
   
   headings: IHeading[] = DataResource.headings;
 
-  // Interfaz más clara para selectedOptions
   selectedOptions: { headingId: number | null, categoryId: number | null, productTypeId: number | null } = {
     headingId: null,
     categoryId: null,
@@ -33,7 +32,6 @@ export class SidebarComponent {
   private headingMap = new Map(this.headings.map(h => [h.headingId, h]));
 
   onSelect(headingId: number, categoryId?: number, productTypeId?: number): void {
-    // Si no se proporcionan categoryId o productTypeId, se asigna null
     this.selectedOptions = { 
       headingId: headingId, 
       categoryId: categoryId ?? null, 
