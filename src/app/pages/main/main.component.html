@@ -1,14 +1,15 @@
-<div class="d-flex">
+<div class="d-flex flex-column min-vh-100">
   <div class="d-flex" id="wrapper">
-    <!-- Sidebar a la izquierda -->
-    <app-sidebar [(active)]="activeSideBar" (selectionChanged)="onSelectionChange($event)"></app-sidebar>
-    <div id="page-content-wrapper">
+    <div id="page-content-wrapper" class="flex-fill">
       <!-- Navbar con botones para la sidebar y el dropdown -->
       <nav class="navbar navbar-light bg-light border-bottom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
+
+          <!-- Sidebar a la izquierda -->
+          <app-sidebar [(active)]="activeSideBar" (selectionChanged)="onSelectionChange($event)"></app-sidebar>
           <!-- Botón para mostrar/ocultar la sidebar -->
           <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleSideBar()">
-            <span class="navbar-toggler-icon"></span>
+            <span class="bi bi-list"> Categorías</span>
           </button>
           <!-- Logo del INDEC -->
           <img src="https://www.indec.gob.ar/Images_WEBINDEC/Logo/Logo_Indec.png" alt="Logo INDEC" class="indec-logo">
@@ -16,19 +17,43 @@
         
         <h1 class="navbar-title">Comparador de Precios</h1>
         
+        <div class="search-bar">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Buscar productos..." >
+        </div>
+
         <!-- Botón para mostrar/ocultar el dropdown -->
         <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleDropDown()">
-          <span class="navbar-toggler-icon"></span>
+          <span class="bi bi-cart"></span>
         </button>
         <app-product-dropdown *ngIf="activeDropDown" [(active)]="activeDropDown"></app-product-dropdown>
       </nav>
 
+       <!-- Mensaje de bienvenida debajo del navbar -->
+       <div class="welcome-message p-3 text-center bg-light">
+        <h2>¡Bienvenidos al Comparador de Precios!</h2>
+        <p>Encontrá los mejores precios y ofertas en todas las categorías. ¡Comenzá tu búsqueda ahora!</p>
+      </div>
+
       <!-- Parte dinámica -->
-      <div class="content">
+      <div class="content flex-fill">
         <app-product-list [products]="products" [hasSelection]="hasSelection"></app-product-list>
         <router-outlet></router-outlet>
       </div>
 
+      <footer class="bg-light text-center text-lg-start mt-auto py-3">
+        <div class="container">
+          <div class="text-center">
+            <span class="text-muted">© 2024 Comparador de Precios. Todos los derechos reservados.</span>
+          </div>
+          <div class="text-center mt-2">
+            <a href="#" class="text-decoration-none me-3">Política de Privacidad</a>
+            <a href="#" class="text-decoration-none">Términos de Servicio</a>
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
 </div>

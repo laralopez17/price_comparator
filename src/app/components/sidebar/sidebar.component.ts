@@ -1,26 +1,25 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IHeading } from '../../api/models/i-heading';
-import { DataResource } from '../../api/resources/data-resource';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { IndecResourceService } from '../../api/resources/indec-resource.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
+  providers: [IndecResourceService],
   imports: [CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
 
 export class SidebarComponent {
-
-  constructor(private router: Router) {}
-
   @Input() active: boolean = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectionChanged: EventEmitter<any> = new EventEmitter<any>();
-  
-  headings: IHeading[] = DataResource.headings;
+  headings: IHeading[] = [];
+
+  constructor(private indecResourceService: IndecResourceService, private router: Router) {}
 
   selectedOptions: { headingId: number | null, categoryId: number | null, productTypeId: number | null } = {
     headingId: null,
@@ -28,6 +27,16 @@ export class SidebarComponent {
     productTypeId: null
   };
 
+  ngOnInit(): void {
+    this.indecResourceService.getCaterogies().subscribe({
+      next: (data) => {
+        this.headings = data;
+        this.headingMap = new Map(this.headings.map(h => [h.headingId, h]));
+        console.log('Headings cargados:', this.headings);
+      },
+      error: (err) => console.error('Error al cargar los headings:', err)
+    });
+  }
   // Mapeo de headings para acceso rápido
   private headingMap = new Map(this.headings.map(h => [h.headingId, h]));
 

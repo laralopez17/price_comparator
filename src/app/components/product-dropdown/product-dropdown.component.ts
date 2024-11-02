@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../../api/models/i-products';
-import { DataResource } from '../../api/resources/data-resource';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,9 +15,10 @@ export class ProductDropdownComponent {
   @Input() active: boolean = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() url: EventEmitter<IProduct> = new EventEmitter<IProduct>();
+  private _products: IProduct[] = []
 
   get products(): IProduct[] {
-    return DataResource.products;
+    return this._products;
   }
   
   confirmSelection() {

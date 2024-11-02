@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { IProduct } from '../../api/models/i-products';
-import { DataResource } from '../../api/resources/data-resource';
 import { CommonModule } from '@angular/common';
 
 @Component({
