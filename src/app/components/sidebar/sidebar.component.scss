@@ -8,7 +8,7 @@
   transform: translateY(50px);
   
   &.active {
-    margin-left: 0; // Cuando está activo, muestra el sidebar
+    margin-left: 0;
     padding: 1rem;
     transform: translateY(35px);
   }
@@ -22,7 +22,7 @@
   }
 
   .list-group {
-    width: 100%; // Asegura que el ancho del contenido se adapte al sidebar
+    width: 100%;
   }
 
   a {

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IProduct } from '../../api/models/i-products';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -14,5 +15,11 @@ import { CommonModule } from '@angular/common';
 
 export class ProductComponent {
   @Input() product!: IProduct;
+
+  constructor(private cartService: CartService) {}
+
+  addToCart() {
+    this.cartService.addToCart(this.product);
+  }
 }
 

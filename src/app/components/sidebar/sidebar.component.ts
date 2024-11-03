@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { IHeading } from '../../api/models/i-heading';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { IndecResourceService } from '../../api/resources/indec-resource.service';
+import { ISelectedOptions } from '../../models/i-selected-options';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,50 +17,50 @@ import { IndecResourceService } from '../../api/resources/indec-resource.service
 export class SidebarComponent {
   @Input() active: boolean = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() selectionChanged: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectionChanged: EventEmitter<ISelectedOptions> = new EventEmitter<ISelectedOptions>();
   headings: IHeading[] = [];
 
-  constructor(private indecResourceService: IndecResourceService, private router: Router) {}
-
-  selectedOptions: { headingId: number | null, categoryId: number | null, productTypeId: number | null } = {
+  selectedOptions: ISelectedOptions = {
     headingId: null,
     categoryId: null,
     productTypeId: null
   };
 
+  constructor(private indecResourceService: IndecResourceService, private elRef: ElementRef, private router: Router) {}
+
+  // Método para cerrar el dropdown al hacer clic fuera
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    if (this.active && !this.elRef.nativeElement.contains(event.target)) {
+      this.active = false;
+      this.activeChange.emit(this.active);
+    }
+  }
+
   ngOnInit(): void {
     this.indecResourceService.getCaterogies().subscribe({
       next: (data) => {
         this.headings = data;
-        this.headingMap = new Map(this.headings.map(h => [h.headingId, h]));
         console.log('Headings cargados:', this.headings);
       },
       error: (err) => console.error('Error al cargar los headings:', err)
     });
   }
-  // Mapeo de headings para acceso rápido
-  private headingMap = new Map(this.headings.map(h => [h.headingId, h]));
 
   onSelect(headingId: number, categoryId?: number, productTypeId?: number): void {
     this.selectedOptions = { 
-      headingId: headingId, 
+      headingId, 
       categoryId: categoryId ?? null, 
       productTypeId: productTypeId ?? null 
     };
-    this.emitSelection();
-  }
-
-  emitSelection(): void {
-    const routeSegments = this.getRouteSegments();
-    this.router.navigate(routeSegments);
+    
     this.selectionChanged.emit(this.selectedOptions);
+    this.router.navigate(this.getRouteSegments());
   }
 
-  getRouteSegments(): string[] {
+   getRouteSegments(): string[] {
     const routeSegments = ['main'];
-
-    // Lógica simplificada para extraer los segmentos de la ruta
-    let currentHeading = this.headingMap.get(this.selectedOptions.headingId!);
+    const currentHeading = this.headings.find(h => h.headingId === this.selectedOptions.headingId);
 
     if (currentHeading) {
       routeSegments.push(this.toKebabCase(currentHeading.headingName));
@@ -78,7 +79,6 @@ export class SidebarComponent {
     return routeSegments;
   }
 
-  // Convierte un nombre a kebab-case
   toKebabCase(name: string): string {
     return name.toLowerCase().replace(/\s+/g, '-');
   }

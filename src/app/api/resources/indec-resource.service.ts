@@ -17,7 +17,7 @@ export class IndecResourceService {
     return this._http.get<IHeading[]>(`${this.apiUrl}/categorias`, { headers });
   }
 
-  getProducts(filters: { categoryId?: number, productTypeId?: number, brandId?: number, headingId?: number }): Observable<IProduct[]> {
+  getProducts(filters: { categoryId?: number | null, productTypeId?: number | null, brandId?: number | null, headingId?: number | null }): Observable<IProduct[]> {
     const headers = { 'Accept-Language': 'ES' };
     return this._http.post<IProduct[]>(`${this.apiUrl}/productos`, filters, { headers });
   }
