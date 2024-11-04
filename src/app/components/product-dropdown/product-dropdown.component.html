@@ -1,6 +1,6 @@
-<div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="{'active': active}">
-  <div class="sidebar-heading">Productos Seleccionados</div>
-  <div class="list-group list-group-flush">
+<div class="dropdown-menu p-3 shadow" [ngClass]="{'show': active}" aria-labelledby="dropdownMenuButton">
+  <div class="dropdown-header">Productos Seleccionados</div>
+  <div class="list-group list-unstyled mb-2">
     <ul>
       <li *ngFor="let product of products" class="product-item d-flex justify-content-between align-items-center">
         <!-- Mostrar nombre, marca y ID del producto -->
@@ -17,7 +17,7 @@
     </ul>
     <!-- Botón de confirmar -->
     <div class="text-center mt-3">
-      <button class="btn btn-primary" (click)="confirmSelection()">Confirmar</button>
+      <button class="btn btn-primary" (click)="confirmSelection()">Comparar Precios</button>
     </div>
   </div>
 </div>

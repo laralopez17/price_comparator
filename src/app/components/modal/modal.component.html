@@ -1,0 +1,28 @@
+<form (ngSubmit)="ok()">
+    <div class="modal-header">
+      <h4 class="modal-title">Colores de fondo</h4>
+      <button type="button" class="btn close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+          <label for="provincia">Provincia</label>
+          <select id="provincia" [formControl]="provinciaCtrl" (change)="onProvinciaChange()" class="form-control">
+            <option value="" disabled selected >Seleccione una provincia</option>
+            <option *ngFor="let provincia of provincias" [value]="provincia.provinceCode">{{ provincia.provinceName }}</option>
+          </select>
+        </div>
+        <div class="form-group mt-3">
+          <label for="localidad">Localidad</label>
+          <select id="localidad" [formControl]="localidadCtrl" class="form-control">
+            <option value="" disabled selected >Seleccione una localidad</option>
+            <option *ngFor="let localidad of localidades" [value]="localidad.localityId">{{ localidad.localityName }}</option>
+          </select>
+        </div>
+      </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="close()">Cancelar</button>
+      <button type="submit" class="btn btn-success">Aceptar</button>
+    </div>
+  </form>

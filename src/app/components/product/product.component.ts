@@ -21,5 +21,11 @@ export class ProductComponent {
   addToCart() {
     this.cartService.addToCart(this.product);
   }
+
+  getImageUrl(productImage: string): string {
+    console.log(productImage);
+    return productImage ? `assets/images/${productImage}` : 'assets/placeholder.png';
+  }
+
 }
 

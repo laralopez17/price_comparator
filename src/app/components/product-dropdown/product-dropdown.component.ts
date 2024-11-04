@@ -2,6 +2,9 @@ import { Component, ElementRef, EventEmitter, Input, HostListener, OnInit, Outpu
 import { IProduct } from '../../api/models/i-products';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
+import { ModalComponent } from '../modal/modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoaderService } from '../../core/services/loader.service';
 
 @Component({
   selector: 'app-product-dropdown',
@@ -17,7 +20,7 @@ export class ProductDropdownComponent implements OnInit{
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   products: IProduct[] = []
 
-  constructor(private cartService: CartService, private elRef: ElementRef) {}
+  constructor(private cartService: CartService, private elRef: ElementRef, private _modal: NgbModal, private loaderService: LoaderService) {}
 
   // Método para cerrar el dropdown al hacer clic fuera
   @HostListener('document:click', ['$event'])
@@ -28,13 +31,23 @@ export class ProductDropdownComponent implements OnInit{
     }
   }
 
+  toggleDropDown() {
+    this.active = !this.active;
+  }
+
   ngOnInit() {
     this.cartService.cart$.subscribe(items => {
-      this.products = items;
+      this.products = items.sort((a, b) => a.productName.localeCompare(b.productName));
     });
   }
+
   confirmSelection() {
-    throw new Error('Method not implemented.');
+    this.loaderService.start();
+    const modalRef = this._modal.open(ModalComponent);
+
+  modalRef.result.finally(() => {
+    this.loaderService.complete(); // Desactivá el loader cuando el modal se cierra
+  });
   }
 
   removeProduct(product: IProduct) {

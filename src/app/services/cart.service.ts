@@ -12,12 +12,17 @@ export class CartService {
   cart$ = this.cartSubject.asObservable(); // Observable para los cambios en el carrito
 
   addToCart(product: IProduct) {
-    this.cartItems.push(product); // Agregar el producto
-    this.updateCart(); // Actualizar el carrito y notificar a los observadores
+    const productExists = this.cartItems.some(item => item.productId === product.productId);
+
+    if (productExists) {
+      throw new Error('El producto ya está en el carrito.');
+    }
+    this.cartItems.push(product);
+    this.updateCart();
   }
 
   removeFromCart(productId: string) {
-    this.cartItems = this.cartItems.filter(item => item.productId !== productId); // Quitar producto
+    this.cartItems = this.cartItems.filter(item => item.productId !== productId);
     this.updateCart();
   }
 

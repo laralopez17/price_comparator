@@ -1,36 +1,37 @@
-#sidebar-wrapper {
-  min-height: 100vh;
-  margin-right: -27rem; // Posición inicial (oculto)
-  transition: margin 0.25s ease-out;
-  background-color: #1c5a97;
-  transform: translateY(50px);
-
-  &.active {
-    margin-right: 0;
-    padding: 1rem;
-    transform: translateY(35px);
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 56px;
+  width: 23rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  display: none;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #f1f1f1 #ffffff;
+  &.show {
+    display: block; // Se muestra cuando está activo
   }
 
-  .sidebar-heading {
+  .dropdown-heading {
     padding: 1.5rem;
     font-size: 1.5rem;
     text-align: center;
-    color: #ffffff;
-    background-color: #1c5a97;
+    color: #ffffff72;
+    background-color: #1c599771;
   }
 
   .list-group {
     width: 22rem;
-    max-height: 70vh; /* Limita la altura de la lista */
-    overflow-y: auto;
-    overflow-x: hidden; /* Oculta el scroll horizontal */
+    max-height: 70vh;
+     /* Oculta el scroll horizontal */
     padding-right: 0.5rem;
-
-    scrollbar-width: thin;
-    scrollbar-color: #a7a7a7 #f1f1f1;
   }
 
-  .list-group::-webkit-scrollbar {
+  .dropdown-menu::-webkit-scrollbar {
     width: 6px; /* Ancho del scroll */
   }
 
@@ -94,3 +95,4 @@
     }
   }
 }
+

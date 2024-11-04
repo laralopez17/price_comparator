@@ -1,6 +1,6 @@
 <div class="product-card">
   <div class="product-image">
-    <img [src]="product.productImage || 'assets/placeholder.png'" alt="{{ product.productName }}">
+    <img [src]="getImageUrl(product.productImage ?? '')"  alt="{{ product.productName }}">
   </div>
   <div class="product-info">
     <h3>{{ product.productName }}</h3>
