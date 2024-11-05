@@ -25,6 +25,9 @@
             placeholder="Buscar productos..." >
         </div>
         
+        <button class="navbar-toggler" type="button" (click)="toggleBranches()">
+          <span class="bi bi-building"> {{ showBranches ? 'Mostrar Productos' : 'Mostrar Sucursales' }}</span>
+        </button>
         <!-- Botón para mostrar/ocultar el dropdown -->
         <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleDropDown()">
           <span class="bi bi-cart"></span>
@@ -40,7 +43,8 @@
 
       <!-- Parte dinámica -->
       <div class="content flex-fill">
-        <app-product-list [products]="products" [hasSelection]="hasSelection"></app-product-list>
+        <app-product-list [products]="products" [branches]="branches" [hasSelection]="hasSelection" [showBranches]="showBranches">
+  </app-product-list>
         <router-outlet></router-outlet>
       </div>
 

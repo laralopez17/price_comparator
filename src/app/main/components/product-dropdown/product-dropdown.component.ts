@@ -42,7 +42,7 @@ export class ProductDropdownComponent implements OnInit{
     const modalRef = this._modal.open(ModalComponent);
 
   modalRef.result.finally(() => {
-    this.loaderService.complete(); // Desactivá el loader cuando el modal se cierra
+    this.loaderService.complete();
   });
   }
 

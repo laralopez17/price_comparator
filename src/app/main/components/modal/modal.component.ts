@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IndecResourceService } from '../../../api/resources/indec-resource.service';
@@ -21,7 +21,8 @@ import { ILocality } from '../../../api/models/i-locality';
 export class ModalComponent implements OnInit {
   provinciaCtrl = new FormControl('');
   localidadCtrl = new FormControl('');
-  
+  @Output() selectionConfirmed = new EventEmitter<number>();
+
   
   provincias: IProvince[] = [];
   localidades: ILocality[] = [];
@@ -53,19 +54,18 @@ export class ModalComponent implements OnInit {
   }
 
   ok(): void {
-    if (!this.provinciaCtrl.value || !this.localidadCtrl.value) {
-        console.warn('Por favor selecciona una provincia y localidad.');
-        return;
+    const localityId = this.localidadCtrl.value;
+
+    if (!this.provinciaCtrl.value || !localityId) {
+      console.warn('Por favor selecciona una provincia y localidad.');
+      return;
     }
 
-    const selectedData = {
-        provincia: this.provinciaCtrl.value,
-        localidad: this.localidadCtrl.value
-    };
-    this._activeModal.close(selectedData);
-}
+    this.selectionConfirmed.emit(Number(localityId));
+    this._activeModal.close();
+  }
 
   close(): void {
-    this._activeModal.close();
+    this._activeModal.dismiss();
   }
 }

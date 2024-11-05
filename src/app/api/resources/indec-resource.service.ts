@@ -6,6 +6,7 @@ import { IHeading } from '../models/i-heading';
 import { IProduct } from '../models/i-products';
 import { IProvince } from '../models/i-province';
 import { ILocality } from '../models/i-locality';
+import { IBranch } from '../models/i-branch';
 
 @Injectable()
 export class IndecResourceService {
@@ -31,6 +32,12 @@ export class IndecResourceService {
   getLocalidades(provinceCode: string): Observable<ILocality[]> {
     return this._http.post<ILocality[]>(`${this.apiUrl}/localidades`, provinceCode, {
       headers: { 'Content-Type': 'application/json' } // Así le especificás que es un string
+  });
+  }
+
+  getBranches(localityId: number): Observable<IBranch[]> {
+    return this._http.post<IBranch[]>(`${this.apiUrl}/informacion-sucursales`, localityId, {
+      headers: { 'Content-Type': 'application/json' }
   });
   }
 }

@@ -1,3 +1,8 @@
-<div class="product-list" *ngIf="hasSelection && products.length > 0">
-  <app-product *ngFor="let product of products" [product]="product"></app-product>
+<div class="item-list">
+  <ng-container *ngIf="showBranches ; else productList">
+    <app-branch *ngFor="let branch of branches" [branch]="branch"></app-branch>
+  </ng-container>
+  <ng-template #productList>
+    <app-product *ngFor="let product of products" [product]="product"></app-product>
+  </ng-template>
 </div>
