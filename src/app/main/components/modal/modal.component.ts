@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { IndecResourceService } from '../../api/resources/indec-resource.service';
-import { IProvince } from '../../api/models/i-province';
-import { ILocality } from '../../api/models/i-locality';
+import { IndecResourceService } from '../../../api/resources/indec-resource.service';
+import { IProvince } from '../../../api/models/i-province';
+import { ILocality } from '../../../api/models/i-locality';
 
 @Component({
   selector: 'app-modal',

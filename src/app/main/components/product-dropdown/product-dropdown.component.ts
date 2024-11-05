@@ -1,16 +1,18 @@
 import { Component, ElementRef, EventEmitter, Input, HostListener, OnInit, Output } from '@angular/core';
-import { IProduct } from '../../api/models/i-products';
+import { IProduct } from '../../../api/models/i-products';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../../components/modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoaderService } from '../../core/services/loader.service';
+import { LoaderService } from '../../../core/services/loader.service';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-product-dropdown',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   templateUrl: './product-dropdown.component.html',
   styleUrls: ['./product-dropdown.component.scss']
@@ -22,17 +24,11 @@ export class ProductDropdownComponent implements OnInit{
 
   constructor(private cartService: CartService, private elRef: ElementRef, private _modal: NgbModal, private loaderService: LoaderService) {}
 
-  // Método para cerrar el dropdown al hacer clic fuera
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: MouseEvent) {
-    if (this.active && !this.elRef.nativeElement.contains(event.target)) {
+  onClickOutside() {
+    if (this.active) {
       this.active = false;
       this.activeChange.emit(this.active);
     }
-  }
-
-  toggleDropDown() {
-    this.active = !this.active;
   }
 
   ngOnInit() {

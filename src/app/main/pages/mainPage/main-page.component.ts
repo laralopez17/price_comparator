@@ -1,13 +1,14 @@
 import { Component, } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
-import { IProduct } from '../../api/models/i-products';
+import { IProduct } from '../../../api/models/i-products';
 import { CommonModule } from '@angular/common';
 import { ProductDropdownComponent } from '../../components/product-dropdown/product-dropdown.component';
 import { RouterModule } from '@angular/router';
 import { ProductListComponent } from '../product-list/product-list.component';
-import { IndecResourceService } from '../../api/resources/indec-resource.service';
+import { IndecResourceService } from '../../../api/resources/indec-resource.service';
 import { ISelectedOptions } from '../../models/i-selected-options';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-main',
@@ -18,12 +19,13 @@ import { ISelectedOptions } from '../../models/i-selected-options';
     CommonModule,
     SidebarComponent,
     ProductDropdownComponent,
-    ProductListComponent 
+    ProductListComponent,
+    SharedModule
   ],
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  templateUrl: './main-page.component.html',
+  styleUrl: './main-page.component.scss'
 })
-export class MainComponent {
+export class MainPageComponent {
 
   activeSideBar: boolean = false;
   activeDropDown: boolean = false;
@@ -37,8 +39,8 @@ export class MainComponent {
   toggleSideBar(): void {
     this.activeSideBar = !this.activeSideBar;
   }
-
-  toggleDropDown() {
+  
+  toggleDropDown(): void {
     this.activeDropDown = !this.activeDropDown;
   }
 

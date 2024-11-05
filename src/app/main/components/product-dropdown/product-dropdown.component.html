@@ -1,4 +1,4 @@
-<div class="dropdown-menu p-3 shadow" [ngClass]="{'show': active}" aria-labelledby="dropdownMenuButton">
+<div class="dropdown-menu p-3 shadow" [ngClass]="{'show': active}" aria-labelledby="dropdownMenuButton" appClickOutside (appClickOutside)="onClickOutside()">
   <div class="dropdown-header">Productos Seleccionados</div>
   <div class="list-group list-unstyled mb-2">
     <ul>

@@ -1,4 +1,5 @@
 <div class="main-page d-flex flex-column min-vh-100">
+  
   <div class="d-flex" id="wrapper">
     <div id="page-content-wrapper" class="flex-fill">
       <!-- Navbar con botones para la sidebar y el dropdown -->
@@ -12,7 +13,7 @@
             <span class="bi bi-list"> Categorías</span>
           </button>
           <!-- Logo del INDEC -->
-          <img src="https://www.indec.gob.ar/Images_WEBINDEC/Logo/Logo_Indec.png" alt="Logo INDEC" class="indec-logo">
+          <img src="assets/indec-logo.png" alt="Logo INDEC" class="indec-logo">
         </div>
         
         <h1 class="navbar-title">Comparador de Precios</h1>
@@ -28,7 +29,7 @@
         <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleDropDown()">
           <span class="bi bi-cart"></span>
         </button>
-        <app-product-dropdown *ngIf="activeDropDown" [(active)]="activeDropDown"></app-product-dropdown>
+        <app-product-dropdown [(active)]="activeDropDown"></app-product-dropdown>
       </nav>
 
        <!-- Mensaje de bienvenida debajo del navbar -->

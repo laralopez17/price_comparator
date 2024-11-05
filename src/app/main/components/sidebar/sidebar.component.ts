@@ -1,15 +1,18 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { IHeading } from '../../api/models/i-heading';
+import { IHeading } from '../../../api/models/i-heading';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { IndecResourceService } from '../../api/resources/indec-resource.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IndecResourceService } from '../../../api/resources/indec-resource.service';
 import { ISelectedOptions } from '../../models/i-selected-options';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   providers: [IndecResourceService],
-  imports: [CommonModule],
+  imports: [CommonModule,
+    SharedModule 
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
@@ -26,24 +29,18 @@ export class SidebarComponent {
     productTypeId: null
   };
 
-  constructor(private indecResourceService: IndecResourceService, private elRef: ElementRef, private router: Router) {}
+  constructor(private _route: ActivatedRoute, private elRef: ElementRef, private router: Router) {}
 
-  // Método para cerrar el dropdown al hacer clic fuera
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: MouseEvent) {
-    if (this.active && !this.elRef.nativeElement.contains(event.target)) {
+  onClickOutside() {
+    if (this.active) {
       this.active = false;
       this.activeChange.emit(this.active);
     }
   }
 
   ngOnInit(): void {
-    this.indecResourceService.getCaterogies().subscribe({
-      next: (data) => {
-        this.headings = data;
-        console.log('Headings cargados:', this.headings);
-      },
-      error: (err) => console.error('Error al cargar los headings:', err)
+    this._route.data.subscribe((data) => {
+      this.headings = data['categorias'];
     });
   }
 
@@ -75,7 +72,6 @@ export class SidebarComponent {
         }
       }
     }
-
     return routeSegments;
   }
 

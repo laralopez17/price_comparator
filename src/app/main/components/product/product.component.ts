@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from '../../api/models/i-products';
+import { IProduct } from '../../../api/models/i-products';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 

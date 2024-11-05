@@ -1,4 +1,4 @@
-<div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="{'active': active}">
+<div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="{'active': active}" appClickOutside (appClickOutside)="onClickOutside()">
   <div class="list-group list-group-flush">
     <ul>
       <li *ngFor="let heading of headings" class="dropdown">
