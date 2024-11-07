@@ -5,6 +5,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IndecResourceService } from '../../../api/resources/indec-resource.service';
 import { IProvince } from '../../../api/models/i-province';
 import { ILocality } from '../../../api/models/i-locality';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -27,7 +28,7 @@ export class ModalComponent implements OnInit {
   provincias: IProvince[] = [];
   localidades: ILocality[] = [];
  
-  constructor(private _activeModal: NgbActiveModal, private locationService: IndecResourceService) {}
+  constructor(private _activeModal: NgbActiveModal, private locationService: IndecResourceService, private router: Router) {}
 
   ngOnInit() {
     this.locationService.getProvincias().subscribe({
@@ -55,12 +56,12 @@ export class ModalComponent implements OnInit {
 
   ok(): void {
     const localityId = this.localidadCtrl.value;
-
+    
     if (!this.provinciaCtrl.value || !localityId) {
       console.warn('Por favor selecciona una provincia y localidad.');
       return;
     }
-
+    console.log('localityId:', Number(localityId));
     this.selectionConfirmed.emit(Number(localityId));
     this._activeModal.close();
   }

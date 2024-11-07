@@ -20,6 +20,7 @@ import { SharedModule } from '../../../shared/shared.module';
 export class SidebarComponent {
   @Input() active: boolean = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() hasSelection: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectionChanged: EventEmitter<ISelectedOptions> = new EventEmitter<ISelectedOptions>();
   headings: IHeading[] = [];
 
@@ -51,8 +52,14 @@ export class SidebarComponent {
       productTypeId: productTypeId ?? null 
     };
     
-    this.selectionChanged.emit(this.selectedOptions);
-    this.router.navigate(this.getRouteSegments());
+    this.router.navigate(this.getRouteSegments(), {
+      queryParams: {
+          headingId: this.selectedOptions.headingId,
+          categoryId: this.selectedOptions.categoryId,
+          productTypeId: this.selectedOptions.productTypeId
+      }
+    });
+    this.hasSelection.emit(true);
   }
 
    getRouteSegments(): string[] {

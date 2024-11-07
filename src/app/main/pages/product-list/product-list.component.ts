@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IProduct } from '../../../api/models/i-products';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from '../../components/product/product.component';
 import { Input } from '@angular/core';
@@ -24,8 +24,17 @@ import { CoreModule } from '../../../core/core.module';
 
 export class ProductListComponent {
   @Input() products: IProduct[] = [];
-  @Input() branches: IBranch[] = []; 
-  @Input() hasSelection: boolean = false; 
-  @Input() showBranches: boolean = false;
-  @Input() hasBranches: boolean = false;
+  @Input() showProducts: boolean = false; 
+
+  constructor(private _route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this._route.data.subscribe((data) => {
+      console.log('Datos del resolver en ProductListComponent:', data);
+      if (data['productos'] && Array.isArray(data['productos'])) {
+        this.products = data['productos'];
+        this.showProducts = this.products.length > 0;
+      }
+    });
+  }
 }

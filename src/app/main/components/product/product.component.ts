@@ -23,7 +23,6 @@ export class ProductComponent {
   }
 
   getImageUrl(productImage: string): string {
-    console.log(productImage);
     return productImage ? `assets/images/${productImage}` : 'assets/placeholder.png';
   }
 
