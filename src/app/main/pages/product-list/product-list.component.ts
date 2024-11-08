@@ -30,7 +30,6 @@ export class ProductListComponent {
 
   ngOnInit(): void {
     this._route.data.subscribe((data) => {
-      console.log('Datos del resolver en ProductListComponent:', data);
       if (data['productos'] && Array.isArray(data['productos'])) {
         this.products = data['productos'];
         this.showProducts = this.products.length > 0;

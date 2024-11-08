@@ -26,8 +26,6 @@ export class BranchListComponent {
 
   ngOnInit(): void {
     this._route.data.subscribe((data) => {
-      console.log('Datos del resolver en ProductListComponent:', data);
-
       if (data['sucursales'] && Array.isArray(data['sucursales'])) {
         this.branches = data['sucursales'];
         this.showBranches = this.branches.length > 0;

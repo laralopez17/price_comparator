@@ -59,6 +59,7 @@ export class SidebarComponent {
           productTypeId: this.selectedOptions.productTypeId
       }
     });
+
     this.hasSelection.emit(true);
   }
 
