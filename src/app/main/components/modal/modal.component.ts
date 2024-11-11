@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IndecResourceService } from '../../../api/resources/indec-resource.service';
 import { IProvince } from '../../../api/models/i-province';
 import { ILocality } from '../../../api/models/i-locality';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal',
@@ -28,10 +29,11 @@ export class ModalComponent implements OnInit {
   provincias: IProvince[] = [];
   localidades: ILocality[] = [];
  
-  constructor(private _activeModal: NgbActiveModal, private locationService: IndecResourceService, private router: Router) {}
+  constructor(private _activeModal: NgbActiveModal, 
+              private locationService: IndecResourceService) {}
 
   ngOnInit() {
-    this.locationService.getProvincias().subscribe({
+     this.locationService.getProvincias().subscribe({
       next: (data) => {
         this.provincias = data;
       },
@@ -55,15 +57,24 @@ export class ModalComponent implements OnInit {
   }
 
   ok(): void {
-    const localityId = this.localidadCtrl.value;
-    
-    if (!this.provinciaCtrl.value || !localityId) {
-      console.warn('Por favor selecciona una provincia y localidad.');
-      return;
+    const localityId = Number(this.localidadCtrl.value);
+    if (localityId) {
+      this.selectionConfirmed.emit(localityId);
+      this._activeModal.close();
+    } else {
+      console.warn('Por favor selecciona una localidad.');
     }
-    console.log('localityId:', Number(localityId));
-    this.selectionConfirmed.emit(Number(localityId));
-    this._activeModal.close();
+  }
+
+  static open(modalService: NgbModal): Observable<number> {
+    const modalRef = modalService.open(ModalComponent);
+    return new Observable<number>(observer => {
+      modalRef.componentInstance.selectionConfirmed.subscribe((localityId: number) => {
+        observer.next(localityId);
+        observer.complete();
+      });
+      modalRef.dismissed.subscribe(() => observer.complete());
+    });
   }
 
   close(): void {

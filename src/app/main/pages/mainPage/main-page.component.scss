@@ -1,6 +1,9 @@
 .main-page {
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 #page-content-wrapper {
@@ -46,3 +49,14 @@
   margin-right: 15px;
 }
 
+.content {
+  flex-grow: 1;
+}
+
+.footer {
+  flex-shrink: 0; /* Asegura que el footer no se reduzca */
+}
+
+.welcome-message[ng-reflect-ng-if="false"] {
+  display: none;
+}

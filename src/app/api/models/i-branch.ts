@@ -3,7 +3,7 @@ export interface IBranch {
     branchName: string;
     address: string;
     phone: string;
-    latitiude: number;
+    latitude: number;
     longitude: number;
     localityId: number;
     branchSchedule: string;

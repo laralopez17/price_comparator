@@ -7,6 +7,7 @@ import { IProduct } from '../models/i-products';
 import { IProvince } from '../models/i-province';
 import { ILocality } from '../models/i-locality';
 import { IBranch } from '../models/i-branch';
+import { IFinalCompared } from '../models/i-final-compared';
 
 @Injectable()
 export class IndecResourceService {
@@ -40,4 +41,13 @@ export class IndecResourceService {
       headers: { 'Content-Type': 'application/json' }
   });
   }
+
+  getComparedProducts( localityId: number, barcode: string[] ): Observable<IFinalCompared[]> {
+    const criteria = {
+      localityId: localityId,
+      barcodes: barcode
+    };
+    return this._http.post<IFinalCompared[]>(`${this.apiUrl}/comparador`, criteria );
+  }
+
 }

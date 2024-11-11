@@ -1,0 +1,73 @@
+.comparing-table {
+    max-width: 80%; // Limita el ancho máximo de la tabla al 80% del ancho de la pantalla
+    margin: 0 auto; // Centra la tabla
+    border-radius: 8px; // Bordes redondeados
+    overflow: hidden; // Para que el contenido no se desborde en bordes redondeados
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Sombra suave
+
+    .product-col {
+        width: 25%;
+    }
+
+    .product-info {
+        .product-img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .fw-bold {
+            font-size: 0.9rem; // Ligera reducción del tamaño de fuente
+            color: #333;
+        }
+
+        small {
+            font-size: 0.8rem;
+            color: #666;
+        }
+    }
+
+    .table {
+        margin-top: 1rem;
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%; // Asegura que la tabla ocupe el ancho máximo definido
+    }
+
+    thead {
+        background-color: #f8f9fa;
+
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            color: #333;
+        }
+    }
+
+    tbody {
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .cheapest {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+    }
+
+    tfoot {
+        th {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .cheapest {
+            color: #007bff;
+            font-weight: bold;
+        }
+    }
+}

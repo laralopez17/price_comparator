@@ -6,6 +6,9 @@ import { IndecResourceService } from './api/resources/indec-resource.service';
 import { productsResolver } from './main/resolvers/products.resolver';
 import { branchesResolver } from './main/resolvers/branches.resolver';
 import { BranchListComponent } from './main/pages/branch-list/branch-list.component';
+import { ModalComponent } from './main/components/modal/modal.component';
+import { ComparingTableComponent } from './main/pages/comparing-table/comparing-table.component';
+import { comparedProductsResolver } from './main/resolvers/compared-products.resolver';
 
 export const routes: Routes = [
     {
@@ -13,6 +16,12 @@ export const routes: Routes = [
         component: MainPageComponent,
         resolve: {categorias: headingsResolver}, providers: [IndecResourceService],
         children: [
+            {
+                path: 'comparador',
+                component: ComparingTableComponent,
+                resolve: { comparedProducts: comparedProductsResolver },
+                providers: [IndecResourceService]
+            },
             {
                 path: 'localidad/:localityId',
                 component: BranchListComponent,

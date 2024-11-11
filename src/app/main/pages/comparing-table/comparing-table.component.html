@@ -1,0 +1,46 @@
+<table *ngIf="comparedData && showComparedTable" class="table table-bordered table-hover align-middle comparing-table">
+    <!-- Encabezado de sucursales -->
+    <thead class="table-light">
+      <tr>
+        <!-- Celda única para "Producto" en el encabezado -->
+        <th class="product-col"  colspan="1">Producto</th>
+        <th *ngFor="let total of comparedData?.totals" class="text-center">
+          {{ total.branchName }} ({{ total.superName }})
+        </th>
+      </tr>
+    </thead>
+  
+    <!-- Cuerpo de la tabla: Productos y precios por sucursal -->
+    <tbody>
+      <tr *ngFor="let product of comparedData?.products">
+        <!-- Celda de producto con imagen y detalles -->
+        <td class="d-flex align-items-center product-info">
+          <img [src]="product.image ? getImageUrl(product.image) : 'ruta/imagen/default.jpg'" alt="Imagen de {{ product.productName }}" class="product-img me-2" />
+          <div>
+            <div class="fw-bold">{{ product.productName }} - {{ product.brandName }}</div>
+            <small class="text-muted">Código: {{ product.barcode }}</small>
+          </div>
+        </td>
+  
+        <!-- Precios por sucursal -->
+        <td *ngFor="let price of product.prices" class="text-center">
+          <span *ngIf="price.price !== null && price.price !== undefined; else noPrice" [ngClass]="{'cheapest': price.cheapest}">
+            {{ price.price | currency }}
+          </span>
+          <ng-template #noPrice>
+            <span class="text-warning">Sin precio actualizado</span>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  
+    <tfoot>
+      <tr>
+        <td class="text-end fw-bold">Total</td>
+        <td *ngFor="let total of comparedData?.totals" class="text-center" [ngClass]="{'cheapest': total.totalCheapest}">
+          {{ total.totalPrices | currency }}
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  

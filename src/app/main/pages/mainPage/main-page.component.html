@@ -13,7 +13,9 @@
             <span class="bi bi-list"> Categorías</span>
           </button>
           <!-- Logo del INDEC -->
-          <img src="assets/indec-logo.png" alt="Logo INDEC" class="indec-logo">
+           <a href="#">
+            <img src="assets/indec-logo.png" alt="Logo INDEC" class="indec-logo">
+           </a>
         </div>
         
         <h1 class="navbar-title">Comparador de Precios</h1>
@@ -35,19 +37,12 @@
         <app-product-dropdown [(active)]="activeDropDown"></app-product-dropdown>
       </nav>
 
-       <!-- Mensaje de bienvenida debajo del navbar -->
-        <ng-container *ngIf="!showBranches && !hasSelection">
-          <div class="welcome-message p-3 text-center bg-light">
-            <h2>¡Bienvenidos al Comparador de Precios!</h2>
-            <p>Encontrá los mejores precios y ofertas en todas las categorías. ¡Comenzá tu búsqueda ahora!</p>
-          </div>
-        </ng-container>
-       
-
       <!-- Parte dinámica -->
       <div class="content flex-fill">
+        <app-welcome *ngIf="showWelcome" [showWelcome]="showWelcome"></app-welcome>
         <app-product-list [showProducts]="hasSelection"></app-product-list>
         <app-branch-list [showBranches]="showBranches"></app-branch-list>
+        <app-comparing-table [showComparedTable]="showComparedTable"></app-comparing-table>
         <router-outlet></router-outlet>
       </div>
 

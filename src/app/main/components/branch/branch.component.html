@@ -3,7 +3,23 @@
       <h3>{{ branch.branchName }}</h3>
       <p>Dirección: {{ branch.address }}</p>
       <p>Teléfono: {{ branch.phone }}</p>
-      <p>Horarios: {{ branch.branchSchedule }}</p>
+      <div class="branch-schedule">
+        <h4>Horarios:</h4>
+        <ul>
+          <li *ngFor="let horario of horariosList">{{ horario }}</li>
+        </ul>
+      </div>
       <p>Servicios: {{ branch.branchServices }}</p>
+
+      <div class="branch-map">
+        <iframe
+          width="100%"
+          height="150"
+          frameborder="0"
+          style="border:0"
+          [src]="sanitizer.bypassSecurityTrustResourceUrl('https://maps.google.com/maps?q=' + branch.latitude + ',' + branch.longitude + '&z=15&output=embed')"
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
   </div>

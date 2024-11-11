@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
 import { ProductDropdownComponent } from '../../components/product-dropdown/product-dropdown.component';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { IndecResourceService } from '../../../api/resources/indec-resource.service';
-import { ISelectedOptions } from '../../models/i-selected-options';
 import { SharedModule } from '../../../shared/shared.module';
 import { ModalComponent } from '../../components/modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../../core/services/loader.service';
-import { BranchComponent } from '../../components/branch/branch.component';
 import { BranchListComponent } from "../branch-list/branch-list.component";
+import { ComparingTableComponent } from "../comparing-table/comparing-table.component";
+import { WelcomeComponent } from "../welcome/welcome.component";
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -25,20 +26,36 @@ import { BranchListComponent } from "../branch-list/branch-list.component";
     ProductDropdownComponent,
     ProductListComponent,
     SharedModule,
-    BranchComponent,
-    BranchListComponent
+    BranchListComponent,
+    ComparingTableComponent,
+    WelcomeComponent
 ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
 })
-export class MainPageComponent {
-
+export class MainPageComponent implements OnInit {
   activeSideBar: boolean = false;
   activeDropDown: boolean = false;
+  showWelcome: boolean = true;
   showBranches: boolean = false;
+  showComparedTable: boolean = false;
   hasSelection: boolean = false;
 
-  constructor(private _route: ActivatedRoute, private router: Router,private _sanitizer: DomSanitizer, private _modal: NgbModal, private loaderService: LoaderService) {
+  constructor(private modalService: NgbModal, 
+    private _route: ActivatedRoute, 
+    private router: Router,
+    private _sanitizer: DomSanitizer, 
+    private _modal: NgbModal, 
+    private loaderService: LoaderService) {
+  }
+
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        // Verificar si la ruta actual es exactamente '/main'
+        this.showWelcome = event.urlAfterRedirects === '/main';
+      });
   }
 
   toggleSideBar(): void {
@@ -52,16 +69,11 @@ export class MainPageComponent {
   toggleBranches(): void {
     this.showBranches = !this.showBranches;
     if (this.showBranches) {
-      this.openBranchSelectionModal();
-    } 
-  }
-
-  openBranchSelectionModal() {
-    this.loaderService.start();
-    const modalRef = this._modal.open(ModalComponent);
-    modalRef.componentInstance.selectionConfirmed.subscribe((localityId: number) => {
-      this.router.navigate(['main', 'localidad', localityId]);
-      this.loaderService.complete();
-    });
+      this.loaderService.start();
+      ModalComponent.open(this.modalService).subscribe(localityId => {
+        this.router.navigate(['main', 'localidad', localityId]);
+        this.loaderService.complete();
+      });
+    }
   }
 }

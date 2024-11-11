@@ -6,6 +6,7 @@ import { ModalComponent } from '../../components/modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../../core/services/loader.service';
 import { SharedModule } from '../../../shared/shared.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-dropdown',
@@ -22,7 +23,11 @@ export class ProductDropdownComponent implements OnInit{
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   products: IProduct[] = []
 
-  constructor(private cartService: CartService, private elRef: ElementRef, private _modal: NgbModal, private loaderService: LoaderService) {}
+  constructor(private cartService: CartService, 
+              private elRef: ElementRef,
+              private modalService: NgbModal, 
+              private router: Router, 
+              private loaderService: LoaderService) {}
 
   onClickOutside() {
     if (this.active) {
@@ -38,12 +43,16 @@ export class ProductDropdownComponent implements OnInit{
   }
 
   confirmSelection() {
-    this.loaderService.start();
-    const modalRef = this._modal.open(ModalComponent);
+    this.loaderService.start();  
+    ModalComponent.open(this.modalService).subscribe(localityId => {
+      const barcodes = this.products.map(p => p.productId);
+      console.log(barcodes);
+      this.router.navigate(['main', 'comparador'], {
+        queryParams: { localityId, barcodes }
+      });
+      this.loaderService.complete();
+    });
 
-  modalRef.result.finally(() => {
-    this.loaderService.complete();
-  });
   }
 
   removeProduct(product: IProduct) {

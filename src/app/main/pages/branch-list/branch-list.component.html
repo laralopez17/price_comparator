@@ -1,8 +1,3 @@
-<ng-template #branchList>
+  <div class="item-list" *ngIf="showBranches && branches.length > 0">
     <app-branch *ngFor="let branch of branches" [branch]="branch"></app-branch>
-  </ng-template>
-  
-  
-  <div class="item-list">
-    <ng-container *ngIf="showBranches ; then branchList"></ng-container>
   </div>
