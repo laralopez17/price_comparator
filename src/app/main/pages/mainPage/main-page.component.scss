@@ -1,9 +1,13 @@
+
 .main-page {
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 5rem;
 }
 
 #page-content-wrapper {
@@ -51,12 +55,11 @@
 
 .content {
   flex-grow: 1;
+  margin-bottom: 2rem;
 }
 
-.footer {
-  flex-shrink: 0; /* Asegura que el footer no se reduzca */
-}
-
-.welcome-message[ng-reflect-ng-if="false"] {
-  display: none;
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; 
 }

@@ -32,7 +32,7 @@ export class IndecResourceService {
 
   getLocalidades(provinceCode: string): Observable<ILocality[]> {
     return this._http.post<ILocality[]>(`${this.apiUrl}/localidades`, provinceCode, {
-      headers: { 'Content-Type': 'application/json' } // Así le especificás que es un string
+      headers: { 'Content-Type': 'application/json' }
   });
   }
 

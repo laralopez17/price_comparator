@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { IHeading } from '../../../api/models/i-heading';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -59,8 +59,9 @@ export class SidebarComponent {
           productTypeId: this.selectedOptions.productTypeId
       }
     });
-
+    this.activeChange.emit(!this.active);
     this.hasSelection.emit(true);
+    window.scrollTo(0, 0);
   }
 
    getRouteSegments(): string[] {

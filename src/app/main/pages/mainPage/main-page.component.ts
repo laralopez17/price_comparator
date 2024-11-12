@@ -41,11 +41,8 @@ export class MainPageComponent implements OnInit {
   showComparedTable: boolean = false;
   hasSelection: boolean = false;
 
-  constructor(private modalService: NgbModal, 
-    private _route: ActivatedRoute, 
+  constructor(private modalService: NgbModal,
     private router: Router,
-    private _sanitizer: DomSanitizer, 
-    private _modal: NgbModal, 
     private loaderService: LoaderService) {
   }
 
@@ -68,6 +65,7 @@ export class MainPageComponent implements OnInit {
 
   toggleBranches(): void {
     this.showBranches = !this.showBranches;
+    this.showWelcome = false;
     if (this.showBranches) {
       this.loaderService.start();
       ModalComponent.open(this.modalService).subscribe(localityId => {
