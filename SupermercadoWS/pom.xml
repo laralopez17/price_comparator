@@ -29,6 +29,8 @@
     <properties>
         <java.version>17</java.version>
         <jakarta.version>3.0.1</jakarta.version>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -109,10 +111,6 @@
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ws</groupId>
-            <artifactId>spring-ws-security</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
