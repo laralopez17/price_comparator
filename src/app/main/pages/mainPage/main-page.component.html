@@ -9,7 +9,7 @@
           <app-sidebar [(active)]="activeSideBar" (hasSelection)="hasSelection"></app-sidebar>
           <!-- Botón para mostrar/ocultar la sidebar -->
           <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleSideBar()">
-            <span class="bi bi-list"> Categorías</span>
+            <span class="bi bi-list" i18n> Categorías</span>
           </button>
           <!-- Logo del INDEC -->
            <a href="#">
@@ -17,17 +17,14 @@
            </a>
         </div>
         
-        <h1 class="navbar-title">Comparador de Precios</h1>
+        <h1 class="navbar-title" i18n>Comparador de Precios</h1>
 
         <div class="search-bar">
-          <input 
-            type="text" 
-            class="form-control" 
-            placeholder="Buscar productos..." >
+          <input type="text" class="form-control" i18n-placeholder placeholder="Buscar productos..." >
         </div>
         
         <button class="navbar-toggler" type="button" (click)="toggleBranches()">
-          <span class="bi bi-building">Mostrar Sucursales</span>
+          <span class="bi bi-building" i18n>Mostrar Sucursales</span>
         </button>
         <!-- Botón para mostrar/ocultar el dropdown -->
         <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleDropDown()">
@@ -35,7 +32,6 @@
         </button>
         <app-product-dropdown [(active)]="activeDropDown"></app-product-dropdown>
       </nav>
-
       <!-- Parte dinámica -->
       <div class="content flex-fill">
         <app-welcome [showWelcome]="showWelcome"></app-welcome>
@@ -48,11 +44,11 @@
     <footer class="bg-light text-center text-lg-start mt-auto py-3">
       <div class="container">
         <div class="text-center">
-          <span class="text-muted">© 2024 Comparador de Precios. Todos los derechos reservados.</span>
+          <span class="text-muted" i18n>© 2024 Comparador de Precios. Todos los derechos reservados.</span>
         </div>
         <div class="text-center mt-2">
-          <a href="#" class="text-decoration-none me-3">Política de Privacidad</a>
-          <a href="#" class="text-decoration-none">Términos de Servicio</a>
+          <a href="#" class="text-decoration-none me-3" i18n>Política de Privacidad</a>
+          <a href="#" class="text-decoration-none" i18n>Términos de Servicio</a>
         </div>
       </div>
     </footer>

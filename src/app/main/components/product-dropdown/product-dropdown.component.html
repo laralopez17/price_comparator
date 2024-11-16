@@ -1,13 +1,13 @@
 <div class="dropdown-menu p-3 shadow" [ngClass]="{'show': active}" aria-labelledby="dropdownMenuButton" appClickOutside (appClickOutside)="onClickOutside()">
-  <div class="dropdown-header">Productos Seleccionados</div>
+  <div class="dropdown-header" i18n>Productos Seleccionados</div>
   <div class="list-group list-unstyled mb-2">
     <ul>
       <li *ngFor="let product of products" class="product-item d-flex justify-content-between align-items-center">
         <!-- Mostrar nombre, marca y ID del producto -->
         <a class="dropdown-item">
-          <strong>Nombre:</strong> {{ product.productName }} <br>
-          <strong>Marca:</strong> {{ product.productBrandName }} <br>
-          <strong>ID:</strong> {{ product.productId }}
+          <strong i18n>Nombre:</strong> {{ product.productName }} <br>
+          <strong i18n>Marca:</strong> {{ product.productBrandName }} <br>
+          <strong i18n>ID:</strong> {{ product.productId }}
         </a>
         <!-- Botón de tacho de basura -->
         <button class="btn btn-danger btn-sm" (click)="removeProduct(product)">
@@ -17,7 +17,7 @@
     </ul>
     <!-- Botón de confirmar -->
     <div class="text-center mt-3">
-      <button class="btn btn-primary" (click)="confirmSelection()">Comparar Precios</button>
+      <button class="btn btn-primary" (click)="confirmSelection()" i18n>Comparar Precios</button>
     </div>
   </div>
 </div>

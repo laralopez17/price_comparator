@@ -30,7 +30,7 @@ export class AppErrorHandler implements ErrorHandler {
         }
         else {
           if(error.status == 0) {
-            message = { text: "Error al conectarse al servicio", num: error.status };
+            message = { text: $localize`Error al conectarse al servicio`, num: error.status };
           }
           else {
             message = { text: error.body, num: error.status };

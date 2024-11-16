@@ -37,7 +37,7 @@ export class ModalComponent implements OnInit {
       next: (data) => {
         this.provincias = data;
       },
-      error: (err) => console.error('Error al cargar las provincias:', err)
+      error: (err) => console.error($localize`Error al cargar las provincias:`, err)
     });
   }
 
@@ -52,7 +52,7 @@ export class ModalComponent implements OnInit {
       next: (data) => {
         this.localidades = data;
       },
-      error: (err) => console.error('Error al cargar las localidades:', err)
+      error: (err) => console.error($localize`Error al cargar las localidades:`, err)
     });
   }
 
@@ -62,7 +62,7 @@ export class ModalComponent implements OnInit {
       this.selectionConfirmed.emit(localityId);
       this._activeModal.close();
     } else {
-      console.warn('Por favor selecciona una localidad.');
+      console.warn($localize`Por favor selecciona una localidad.`);
     }
   }
 

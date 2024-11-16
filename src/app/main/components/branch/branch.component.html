@@ -1,15 +1,15 @@
 <div class="branch-card">
     <div class="branch-info">
       <h3>{{ branch.branchName }}</h3>
-      <p>Dirección: {{ branch.address }}</p>
-      <p>Teléfono: {{ branch.phone }}</p>
+      <p i18n>Dirección: {{ branch.address }}</p>
+      <p i18n>Teléfono: {{ branch.phone }}</p>
       <div class="branch-schedule">
-        <h4>Horarios:</h4>
+        <h4 i18n>Horarios:</h4>
         <ul>
           <li *ngFor="let horario of horariosList">{{ horario }}</li>
         </ul>
       </div>
-      <p>Servicios: {{ branch.branchServices }}</p>
+      <p i18n>Servicios: {{ branch.branchServices }}</p>
 
       <div class="branch-map">
         <iframe

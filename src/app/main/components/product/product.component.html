@@ -1,13 +1,13 @@
 <div class="product-card">
   <div class="product-image">
-    <img [src]="getImageUrl(product.productImage ?? '')"  alt="{{ product.productName }}">
+    <img [src]="getImageUrl(product.productImage ?? '')" i18n-alt alt="{{ product.productName }}">
   </div>
   <div class="product-info">
     <h3>{{ product.productName }}</h3>
-    <p>{{ product.productDesc || 'No description available' }}</p>
-    <p>Marca: {{ product.productBrandName }}</p>
+    <p i18n>{{ product.productDesc || 'No hay descripcion disponible' }}</p>
+    <p i18n>Marca: {{ product.productBrandName }}</p>
   </div>
   <div class="product-actions">
-    <button class="btn btn-primary" (click)="addToCart()">Agregar al carrito</button>
+    <button class="btn btn-primary" (click)="addToCart()" i18n>Agregar al carrito</button>
   </div>
 </div>

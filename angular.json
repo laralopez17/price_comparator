@@ -13,6 +13,18 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n":{
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "/en/"
+          },
+          "es-AR": {
+            "translation": "src/locale/messages.es-AR.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -59,7 +71,20 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "development-es": {
+              "localize": ["es-AR"],
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "development-en": {
+              "localize": ["en"],
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
@@ -70,7 +95,7 @@
                 }
               ]
             }
-          },
+            },
           "defaultConfiguration": "production"
         },
         "serve": {
@@ -79,8 +104,11 @@
             "production": {
               "buildTarget": "proyecto-final:build:production"
             },
-            "development": {
-              "buildTarget": "proyecto-final:build:development"
+            "development-es": {
+              "buildTarget": "proyecto-final:build:development-es"
+            },
+            "development-en": {
+              "buildTarget": "proyecto-final:build:development-en"
             }
           },
           "defaultConfiguration": "development"
@@ -93,7 +121,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",

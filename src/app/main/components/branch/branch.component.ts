@@ -22,6 +22,6 @@ export class BranchComponent {
     this.horariosList = this.branch.branchSchedule
       .split('.')
       .map((dia) => dia.trim())
-      .filter((dia) => dia);  // Elimina cualquier string vacío
+      .filter((dia) => dia);
   }
 }

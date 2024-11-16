@@ -15,8 +15,9 @@ export class CartService {
     const productExists = this.cartItems.some(item => item.productId === product.productId);
 
     if (productExists) {
-      throw new Error('El producto ya está en el carrito.');
+      throw new Error($localize`El producto ya está en el carrito.`);
     }
+    
     this.cartItems.push(product);
     this.updateCart();
   }

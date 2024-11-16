@@ -8,12 +8,13 @@ import { ProductListComponent } from '../product-list/product-list.component';
 import { IndecResourceService } from '../../../api/resources/indec-resource.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { ModalComponent } from '../../components/modal/modal.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../../core/services/loader.service';
 import { BranchListComponent } from "../branch-list/branch-list.component";
 import { ComparingTableComponent } from "../comparing-table/comparing-table.component";
 import { WelcomeComponent } from "../welcome/welcome.component";
 import { filter } from 'rxjs';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-main',
@@ -28,7 +29,8 @@ import { filter } from 'rxjs';
     SharedModule,
     BranchListComponent,
     ComparingTableComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    NgbAlertModule
 ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
@@ -44,7 +46,7 @@ export class MainPageComponent implements OnInit {
   constructor(private modalService: NgbModal,
     private router: Router,
     private loaderService: LoaderService) {
-  }
+    }
 
   ngOnInit() {
     this.router.events
