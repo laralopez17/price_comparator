@@ -10,27 +10,17 @@ import java.util.List;
 import java.util.Map;
 
 public class SupermercadoApiSOAP implements SupermercadoApi {
-    private final String wsdlUrl;
-    private final String apiKey;
-    private SOAPClient client;
+    private final SOAPClient client;
     private final int superId;
-    private final OperationType operation;
 
-    public SupermercadoApiSOAP(String wsdlUrl, String apiKey, int superId, OperationType operation) {
-        this.wsdlUrl = wsdlUrl;
-        this.apiKey = apiKey;
+    public SupermercadoApiSOAP(String wsdlUrl, String apiKey, int superId, String operation, String namespace, String serviceName, String portName) {
         this.superId = superId;
-        this.operation = operation;
-        initClient();
-    }
-
-    private void initClient() {
         this.client = new SOAPClient.SOAPClientBuilder()
                 .wsdlUrl(wsdlUrl)
-                .namespace("http://services.supermercadosws.das.ubp.edu.ar/")
-                .serviceName("SupermercadosWSPortService")
-                .portName("SupermercadosWSPortSoap11")
-                .operationName(operation.getOperationName())
+                .namespace(namespace)
+                .serviceName(serviceName)
+                .portName(portName)
+                .operationName(operation)
                 .apiKey(apiKey)
                 .build();
     }

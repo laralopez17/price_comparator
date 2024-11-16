@@ -2,6 +2,7 @@ package ar.edu.ubp.das.indecapi.services;
 
 import ar.edu.ubp.das.indecapi.beans.*;
 import ar.edu.ubp.das.indecapi.repositories.IndecRepository;
+import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,6 +15,7 @@ public class IndecService {
     @Autowired
     private IndecRepository indecRepository;
 
+    private final Gson gson = new Gson();
     public List<RubroBean> obtenerCategoriasProductos(String codIdioma) {
         List<Map<String, Object>> filas = indecRepository.getCategoriasProductos(codIdioma);
 
@@ -109,7 +111,7 @@ public class IndecService {
                                 priceResponse.setBranchName(precio.getBranchName());
                                 priceResponse.setSuperName(precio.getSuperName());
                                 priceResponse.setCheapest(precio.isCheapest());
-                                priceResponse.setProductStatus(precio.isProductStatus());
+                                priceResponse.setUpdated(precio.isUpdated());
                                 return priceResponse;
                             })
                             .collect(Collectors.toList());

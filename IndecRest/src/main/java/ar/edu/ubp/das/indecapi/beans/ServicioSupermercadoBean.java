@@ -8,6 +8,9 @@ public class ServicioSupermercadoBean {
     private String serviceType;
     private String serviceToken;
     private LocalDateTime lastActDate;
+    private String namespace;
+    private String serviceName;
+    private String portName;
 
     public int getSuperId() {
         return superId;
@@ -47,5 +50,29 @@ public class ServicioSupermercadoBean {
 
     public void setLastActDate(LocalDateTime lastActDate) {
         this.lastActDate = lastActDate;
+    }
+
+    public String getNamespace() {
+        return namespace;
+    }
+
+    public void setNamespace(String namespace) {
+        this.namespace = namespace;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getPortName() {
+        return portName;
+    }
+
+    public void setPortName(String portName) {
+        this.portName = portName;
     }
 }

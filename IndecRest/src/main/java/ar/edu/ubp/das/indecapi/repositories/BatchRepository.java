@@ -5,7 +5,6 @@ import ar.edu.ubp.das.indecapi.components.SimpleJdbcCallFactory;
 import ar.edu.ubp.das.indecapi.factory.SupermercadoApi;
 import ar.edu.ubp.das.indecapi.factory.SupermercadoApiRest;
 import ar.edu.ubp.das.indecapi.factory.SupermercadoApiSOAP;
-import ar.edu.ubp.das.indecapi.factory.OperationType;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +30,7 @@ public class BatchRepository {
         return jdbcCallFactory.executeQuery("get_servicios_supermercados", "dbo", "productos", ServicioSupermercadoBean.class);
     }
 
-    private List<SupermercadoApi> obtenerServiciosSupermercadoApis(OperationType operacion) {
+    private List<SupermercadoApi> obtenerServiciosSupermercadoApis(String operacion) {
         List<SupermercadoApi> apis = new ArrayList<>();
         List<ServicioSupermercadoBean> servicios = obtenerServiciosSupermercados();
 
@@ -46,7 +45,10 @@ public class BatchRepository {
                         servicio.getServiceUrl(),
                         servicio.getServiceToken(),
                         servicio.getSuperId(),
-                        operacion
+                        operacion,
+                        servicio.getNamespace(),
+                        servicio.getServiceName(),
+                        servicio.getPortName()
                 ));
                 default -> throw new IllegalArgumentException("Tipo de servicio no soportado: " + servicio.getServiceType());
             }
@@ -55,7 +57,7 @@ public class BatchRepository {
     }
 
     public void obtenerPreciosProductosBatch() {
-        List<SupermercadoApi> apis = obtenerServiciosSupermercadoApis(OperationType.OBTENER_PRECIOS);
+        List<SupermercadoApi> apis = obtenerServiciosSupermercadoApis("ObtenerPreciosRequest");
         List<PrecioCriteriaBean> criteria = getTodosProductos();
 
         for (SupermercadoApi supermercadoApi : apis) {
@@ -72,7 +74,7 @@ public class BatchRepository {
     }
 
     public void obtenerInformacionBatch() {
-        List<SupermercadoApi> apis = obtenerServiciosSupermercadoApis(OperationType.OBTENER_INFORMACION);
+        List<SupermercadoApi> apis = obtenerServiciosSupermercadoApis("ObtenerInformacionRequest");
 
         for (SupermercadoApi supermercadoApi : apis) {
             try {

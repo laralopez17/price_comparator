@@ -7,7 +7,7 @@ public class ComparadorPrecioBean {
     private String branchName;
     private String superName;
     private boolean cheapest;
-    private boolean productStatus;
+    private boolean isUpdated;
 
     public boolean isCheapest() {
         return cheapest;
@@ -15,6 +15,14 @@ public class ComparadorPrecioBean {
 
     public void setCheapest(boolean cheapest) {
         this.cheapest = cheapest;
+    }
+
+    public boolean isUpdated() {
+        return isUpdated;
+    }
+
+    public void setUpdated(boolean updated) {
+        isUpdated = updated;
     }
 
     public String getSuperName() {
@@ -57,11 +65,4 @@ public class ComparadorPrecioBean {
         this.superId = superId;
     }
 
-    public boolean isProductStatus() {
-        return productStatus;
-    }
-
-    public void setProductStatus(boolean productStatus) {
-        this.productStatus = productStatus;
-    }
 }

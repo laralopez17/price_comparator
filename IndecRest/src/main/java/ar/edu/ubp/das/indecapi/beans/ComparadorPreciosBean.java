@@ -10,7 +10,7 @@ public class ComparadorPreciosBean extends PrecioBean {
     private int isCheapest;
     private Double totalPrices;
     private int isTotalCheapest;
-    private boolean productStatus;
+    private boolean isUpdated;
 
     public int getSuperId() {
         return superId;
@@ -84,11 +84,11 @@ public class ComparadorPreciosBean extends PrecioBean {
         this.brandName = brandName;
     }
 
-    public boolean isProductStatus() {
-        return productStatus;
+    public boolean isUpdated() {
+        return isUpdated;
     }
 
-    public void setProductStatus(boolean productStatus) {
-        this.productStatus = productStatus;
+    public void setUpdated(boolean updated) {
+        isUpdated = updated;
     }
 }
