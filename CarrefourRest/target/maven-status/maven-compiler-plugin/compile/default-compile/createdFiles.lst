@@ -1,0 +1,10 @@
+ar\edu\ubp\das\supermercadorest\SupermercadoRestApplication.class
+ar\edu\ubp\das\supermercadorest\beans\PrecioBean.class
+ar\edu\ubp\das\supermercadorest\components\SimpleJdbcCallFactory.class
+ar\edu\ubp\das\supermercadorest\aspects\SecurityAspect.class
+ar\edu\ubp\das\supermercadorest\repositories\SupermercadosRepository.class
+ar\edu\ubp\das\supermercadorest\aspects\AuditAspect.class
+ar\edu\ubp\das\supermercadorest\resources\SupermercadoResource.class
+ar\edu\ubp\das\supermercadorest\beans\InformacionBean.class
+ar\edu\ubp\das\supermercadorest\config\WebConfig.class
+ar\edu\ubp\das\supermercadorest\aspects\ExceptionHandlingAspect.class
