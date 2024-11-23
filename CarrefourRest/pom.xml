@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ar.edu.ubp.das</groupId>
-	<artifactId>LaEsquinitaRest</artifactId>
+	<artifactId>CarrefourRest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SupermercadoRest</name>
 	<description>SupermercadoRest</description>

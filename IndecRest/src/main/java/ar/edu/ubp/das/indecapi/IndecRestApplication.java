@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IndecApiApplication {
+public class IndecRestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(IndecApiApplication.class, args);
+        SpringApplication.run(IndecRestApplication.class, args);
     }
 
 }

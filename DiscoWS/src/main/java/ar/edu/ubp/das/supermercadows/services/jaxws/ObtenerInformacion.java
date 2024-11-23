@@ -11,4 +11,5 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ObtenerInformacionRequest", namespace = "http://services.supermercadosws.das.ubp.edu.ar/")
 public class ObtenerInformacion {
 
+
 }

@@ -7,10 +7,10 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @SpringBootApplication
 @EnableAspectJAutoProxy
 
-public class SupermercadoWsApplication {
+public class DiscoWsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SupermercadoWsApplication.class, args);
+        SpringApplication.run(DiscoWsApplication.class, args);
     }
 
 }
