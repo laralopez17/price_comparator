@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class ExceptionHandlingAspect {
     private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlingAspect.class);
 
-    @Around("execution(* ar.edu.ubp.das.indecapi.*(..))")
+    @Around("execution(* ar.edu.ubp.das.indecapi.resources..*(..))")
     public Object handleExceptions(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             return joinPoint.proceed();

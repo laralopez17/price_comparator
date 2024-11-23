@@ -6,17 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="IndecApi" />
-        <module name="SupermercadoRest" />
-        <module name="SupermercadoWS" />
+        <module name="LaEsquinitaRest" />
+        <module name="DiscoWS" />
+        <module name="IndecRest" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="IndecApi" options="-parameters" />
-      <module name="SupermercadoRest" options="-parameters" />
-      <module name="SupermercadoWS" options="-parameters" />
+      <module name="DiscoWS" options="-parameters" />
+      <module name="IndecRest" options="-parameters" />
+      <module name="LaEsquinitaRest" options="-parameters" />
     </option>
   </component>
 </project>

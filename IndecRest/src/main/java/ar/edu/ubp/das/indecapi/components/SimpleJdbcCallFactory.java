@@ -58,5 +58,4 @@ public class SimpleJdbcCallFactory {
         Map<String, Object> out = jdbcCall.execute(params);
         return (List<Map<String, Object>>) out.get(resultSetName);
     }
-
 }
