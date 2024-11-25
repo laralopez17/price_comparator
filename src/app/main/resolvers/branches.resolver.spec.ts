@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+/*import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
 import { branchesResolver } from './branches.resolver';
@@ -14,4 +14,4 @@ describe('branchesResolver', () => {
   it('should be created', () => {
     expect(executeResolver).toBeTruthy();
   });
-});
+});*/

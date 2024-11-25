@@ -21,7 +21,7 @@
           },
           "es-AR": {
             "translation": "src/locale/messages.es-AR.xlf",
-            "baseHref": ""
+            "baseHref": "/"
           }
         }
       },
@@ -52,7 +52,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
@@ -103,6 +103,9 @@
           "configurations": {
             "production": {
               "buildTarget": "proyecto-final:build:production"
+            },
+            "development": { 
+            "buildTarget": "proyecto-final:build:development-es"
             },
             "development-es": {
               "buildTarget": "proyecto-final:build:development-es"

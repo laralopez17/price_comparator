@@ -5,7 +5,8 @@
     "ng": "ng",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "start": "ng serve --open --configuration=development-es",
+    "start": "ng serve --open",
+    "start-es": "ng serve --open --configuration=development-es",
     "start-en": "ng serve --open --port 4200 --configuration=development-en",
     "extract-i18n": "ng extract-i18n --output-path=src/locale && xliffmerge --profile xliffmerge.json",
     "test": "ng test"
@@ -21,6 +22,8 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@ng-bootstrap/ng-bootstrap": "^17.0.1",
+    "@popperjs/core": "^2.11.8",
+    "@types/node": "^22.9.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "rxjs": "~7.8.0",

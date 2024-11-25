@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, HostListener, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProduct } from '../../../api/models/i-products';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
@@ -24,7 +24,6 @@ export class ProductDropdownComponent implements OnInit{
   products: IProduct[] = []
 
   constructor(private cartService: CartService, 
-              private elRef: ElementRef,
               private modalService: NgbModal, 
               private router: Router, 
               private loaderService: LoaderService) {}
@@ -45,9 +44,10 @@ export class ProductDropdownComponent implements OnInit{
   confirmSelection() {
     this.loaderService.start();  
     ModalComponent.open(this.modalService).subscribe(localityId => {
+      const lang = this.router.url.split('/')[1] || 'es-AR';
       const barcodes = this.products.map(p => p.productId);
       console.log(barcodes);
-      this.router.navigate(['main', 'comparador'], {
+      this.router.navigate([lang, 'comparador'], {
         queryParams: { localityId, barcodes }
       });
       this.loaderService.complete();

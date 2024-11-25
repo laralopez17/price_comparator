@@ -20,7 +20,6 @@ import { CoreModule } from '../../../core/core.module';
 })
 export class BranchListComponent {
   @Input() branches: IBranch[] = []; 
-  @Input() showBranches: boolean = false;
 
   constructor(private _route: ActivatedRoute) {}
 
@@ -28,7 +27,6 @@ export class BranchListComponent {
     this._route.data.subscribe((data) => {
       if (data['sucursales'] && Array.isArray(data['sucursales'])) {
         this.branches = data['sucursales'];
-        this.showBranches = this.branches.length > 0;
       }
     });
   }

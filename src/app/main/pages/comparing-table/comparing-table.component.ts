@@ -13,8 +13,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './comparing-table.component.scss'
 })
 export class ComparingTableComponent implements OnInit {
+[x: string]: any;
   comparedData: IFinalCompared | null = null;
-  @Input() showComparedTable: boolean = false;
+  noPriceBranches: { branchName: string; superName: string }[] = [];
   @Output() showTable: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private route: ActivatedRoute) {}
@@ -22,9 +23,16 @@ export class ComparingTableComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.comparedData = data['comparedProducts'];
-      console.log(this.comparedData);
-      this.sortComparedData()
-      this.showComparedTable = true;
+      this.sortComparedData();
+
+      if (this.comparedData?.totals) {
+        this.noPriceBranches = this.comparedData.totals
+          .filter((total) => total.totalPrices === null || total.totalPrices === undefined)
+          .map((total) => ({
+            branchName: total.branchName,
+            superName: total.superName
+          }));
+      }
     });
   }
 
@@ -36,6 +44,10 @@ export class ComparingTableComponent implements OnInit {
         product.prices.sort((a, b) => a.superId - b.superId);
       });
     }
+  }
+
+  shouldShowColumn(branchName: string): boolean {
+    return !this.noPriceBranches.some((branch) => branch.branchName === branchName);
   }
 
   getImageUrl(productImage: string): string {

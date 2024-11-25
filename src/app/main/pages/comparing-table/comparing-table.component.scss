@@ -1,31 +1,32 @@
 .comparing-table {
-    max-width: 80%; // Limita el ancho máximo de la tabla al 80% del ancho de la pantalla
+    max-width: 90%; // Limita el ancho máximo de la tabla al 80% del ancho de la pantalla
     margin: 0 auto; // Centra la tabla
-    border-radius: 8px; // Bordes redondeados
+    border-radius: 10px; // Bordes redondeados
     overflow: hidden; // Para que el contenido no se desborde en bordes redondeados
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 3rem;
+    border: 1px solid #ddd;
+    margin-bottom: 5rem;
 
     .product-col {
-        width: 25%;
+        width: 30%;
     }
 
     .product-info {
         .product-img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 4px;
+          width: 50px; // Un poco más grande para que las imágenes sean más visibles
+          height: 50px;
+          border-radius: 5px;
+          border: 1px solid #ddd; // Añade un borde sutil
         }
 
         .fw-bold {
-            font-size: 0.9rem; // Ligera reducción del tamaño de fuente
-            color: #333;
+            font-size: 0.95rem; // Ligera reducción del tamaño de fuente
+            color: #444;
         }
 
         small {
             font-size: 0.8rem;
-            color: #666;
+            color: #888;
         }
     }
 
@@ -34,41 +35,117 @@
         border-collapse: separate;
         border-spacing: 0;
         width: 100%; // Asegura que la tabla ocupe el ancho máximo definido
+
+        th,
+        td {
+          text-align: center;
+          padding: 0.8rem;
+          font-size: 0.9rem;
+        }
     }
 
-    thead {
-        background-color: #f8f9fa;
+   
 
+    thead {
+        background-color: #f7f7f7; // Un color más neutro para el encabezado
+        border-bottom: 2px solid #ccc;
+    
         th {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            color: #333;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #555;
         }
     }
 
     tbody {
         tr:hover {
-            background-color: #f1f1f1;
+          background-color: #f9f9f9; // Efecto de hover sutil
         }
-
+    
         .cheapest {
-            color: #28a745;
-            font-weight: bold;
-            font-size: 1rem;
+          color: #28a745;
+          font-weight: bold;
         }
-    }
+    
+        .text-warning {
+          color: #ffc107;
+        }
+      }
 
     tfoot {
-        th {
-            font-weight: bold;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
+        background-color: #f1f1f1; // Fondo distinto para destacar los totales
+        font-size: 0.95rem;
+        font-weight: bold;
+    
         .cheapest {
-            color: #007bff;
-            font-weight: bold;
+          color: #007bff;
+        }
+    
+        .cheapestWProducts {
+          color: #28a745;
         }
     }
 }
+
+//Alerta
+.alert {
+    max-width: 90%;
+    margin: 0 auto;
+    border: 1px solid #e74c3c; // Un borde más definido
+    background-color: #fdecea; // Fondo claro para que el texto destaque
+    color: #e74c3c; // Mismo color que el borde para consistencia
+    border-radius: 8px; // Bordes redondeados
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  
+    ul {
+      margin: 0;
+      padding-left: 1.5rem; // Espaciado del listado
+      list-style: square; // Cambia el estilo de los bullets
+    }
+  
+    li {
+      margin-bottom: 0.5rem;
+    }
+  
+    p {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif; // Cambiar por la tipografía que estés usando
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #444;
+  }
+
+.color-reference {
+    display: flex;
+    justify-content: center; // Centra horizontalmente
+    flex-wrap: wrap; // Permite que los elementos se acomoden en varias filas si es necesario
+    gap: 1rem; // Espaciado entre los elementos
+  
+    .cheapest,
+    .cheapestWProducts {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+  
+    .cheapest {
+      background-color: #007bff;
+    }
+  
+    .cheapestWProducts {
+      background-color: #28a745;
+    }
+  }

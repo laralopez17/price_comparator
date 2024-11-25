@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IndecResourceService } from '../../../api/resources/indec-resource.service';
 import { ISelectedOptions } from '../../models/i-selected-options';
 import { SharedModule } from '../../../shared/shared.module';
+import { LoaderService } from '../../../core/services/loader.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -20,7 +21,6 @@ import { SharedModule } from '../../../shared/shared.module';
 export class SidebarComponent {
   @Input() active: boolean = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() hasSelection: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectionChanged: EventEmitter<ISelectedOptions> = new EventEmitter<ISelectedOptions>();
   headings: IHeading[] = [];
 
@@ -30,7 +30,7 @@ export class SidebarComponent {
     productTypeId: null
   };
 
-  constructor(private _route: ActivatedRoute, private elRef: ElementRef, private router: Router) {}
+  constructor(private loaderService: LoaderService, private _route: ActivatedRoute, private elRef: ElementRef, private router: Router) {}
 
   onClickOutside() {
     if (this.active) {
@@ -40,8 +40,12 @@ export class SidebarComponent {
   }
 
   ngOnInit(): void {
+    this.loaderService.start();
     this._route.data.subscribe((data) => {
       this.headings = data['categorias'];
+      setTimeout(() => {
+        this.loaderService.complete();
+      }, 2000);
     });
   }
 
@@ -59,13 +63,15 @@ export class SidebarComponent {
           productTypeId: this.selectedOptions.productTypeId
       }
     });
+    
     this.activeChange.emit(!this.active);
-    this.hasSelection.emit(true);
     window.scrollTo(0, 0);
   }
 
    getRouteSegments(): string[] {
-    const routeSegments = ['main'];
+    const lang = this._route.snapshot.params['lang'] || 'es-AR';
+    const routeSegments = [lang];
+
     const currentHeading = this.headings.find(h => h.headingId === this.selectedOptions.headingId);
 
     if (currentHeading) {

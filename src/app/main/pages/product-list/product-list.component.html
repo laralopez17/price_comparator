@@ -1,3 +1,4 @@
-<div class="item-list" *ngIf="showProducts && products.length > 0">
-  <app-product *ngFor="let product of products" [product]="product"></app-product>
+<h3 i18n>Seleccione los productos a comparar...</h3>
+<div class="item-list">
+  <app-product *ngFor="let product of products" [product]="product" (addedProduct)="onProductAdded(product.productName)"></app-product>
 </div>

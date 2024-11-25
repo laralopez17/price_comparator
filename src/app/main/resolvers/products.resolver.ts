@@ -6,11 +6,10 @@ import { ISelectedOptions } from '../models/i-selected-options';
 
 export const productsResolver: ResolveFn<IProduct[]> = (route, state) => {
 
-    const headingId = Number(route.queryParamMap.get('headingId'));
-    const categoryId = Number(route.queryParamMap.get('categoryId'));
-    const productTypeId = Number(route.queryParamMap.get('productTypeId'));
+  const headingId = Number(route.queryParamMap.get('headingId'));
+  const categoryId = Number(route.queryParamMap.get('categoryId'));
+  const productTypeId = Number(route.queryParamMap.get('productTypeId'));
   
-
   const selectedOptions: ISelectedOptions = { 
     headingId, 
     categoryId: categoryId ?? null, 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../../../api/models/i-products';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
@@ -15,11 +15,13 @@ import { CartService } from '../../services/cart.service';
 
 export class ProductComponent {
   @Input() product!: IProduct;
+  @Output() addedProduct = new EventEmitter<boolean>();
 
-  constructor(private cartService: CartService) {}
+  constructor(public cartService: CartService) {}
 
   addToCart() {
     this.cartService.addToCart(this.product);
+    this.addedProduct.emit(true);
   }
 
   getImageUrl(productImage: string): string {

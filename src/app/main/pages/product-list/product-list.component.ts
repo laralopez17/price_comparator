@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { IProduct } from '../../../api/models/i-products';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from '../../components/product/product.component';
 import { Input } from '@angular/core';
 import { CoreModule } from '../../../core/core.module';
+import { ProductEventService } from '../../services/product-event.service';
 
 @Component({
   selector: 'app-product-list',
@@ -21,16 +22,19 @@ import { CoreModule } from '../../../core/core.module';
 
 export class ProductListComponent {
   @Input() products: IProduct[] = [];
-  @Input() showProducts: boolean = false; 
+  @Output() productAdded = new EventEmitter<string>();
 
-  constructor(private _route: ActivatedRoute) {}
+  constructor(private _route: ActivatedRoute, private productEventService: ProductEventService) {}
 
   ngOnInit(): void {
     this._route.data.subscribe((data) => {
       if (data['productos'] && Array.isArray(data['productos'])) {
         this.products = data['productos'];
-        this.showProducts = this.products.length > 0;
       }
     });
+  }
+
+  onProductAdded(product: string): void {
+    this.productEventService.emitProductAdded(product);
   }
 }

@@ -22,13 +22,17 @@ export class CartService {
     this.updateCart();
   }
 
+  isInCart(productId: string): boolean {
+    return this.cartItems.some(item => item.productId === productId);
+  }
+
   removeFromCart(productId: string) {
     this.cartItems = this.cartItems.filter(item => item.productId !== productId);
     this.updateCart();
   }
 
   private updateCart() {
-    localStorage.setItem('cart', JSON.stringify(this.cartItems)); // Guardar en localStorage
-    this.cartSubject.next(this.cartItems); // Emitir la actualización a los suscriptores
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    this.cartSubject.next(this.cartItems);
   }
 }

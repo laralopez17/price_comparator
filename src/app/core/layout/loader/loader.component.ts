@@ -10,7 +10,7 @@ import { Loader, LoaderService } from '../../services/loader.service';
 export class LoaderComponent {
 
   private _subscription!: Subscription;
-  private _loaded: boolean = false;
+  private _loaded: boolean = true;
 
   constructor(private _service: LoaderService) { }
 

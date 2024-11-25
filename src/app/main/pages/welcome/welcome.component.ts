@@ -11,5 +11,4 @@ import { Component, Input } from '@angular/core';
   styleUrl: './welcome.component.scss'
 })
 export class WelcomeComponent {
-  @Input() showWelcome: boolean = false;
 }

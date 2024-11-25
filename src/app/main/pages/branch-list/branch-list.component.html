@@ -1,3 +1,4 @@
-  <div class="item-list" *ngIf="showBranches && branches.length > 0">
+  <h3 i18n>Sucursales</h3>
+  <div class="item-list">
     <app-branch *ngFor="let branch of branches" [branch]="branch"></app-branch>
   </div>

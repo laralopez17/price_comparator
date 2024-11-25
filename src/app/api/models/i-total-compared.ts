@@ -5,4 +5,5 @@ export interface ITotalCompared {
     branchName: string;
     superName: string;
     totalCheapest: boolean;
+    cheapestWProducts: boolean;
 }

@@ -1,12 +1,38 @@
-<table *ngIf="comparedData && showComparedTable" class="table table-bordered table-hover align-middle comparing-table">
+<h3 i18n> Comparación de precios</h3>
+
+<!-- Cartel para sucursales sin precios -->
+<div *ngIf="noPriceBranches.length" class="alert alert-danger" role="alert">
+  <p i18n>Las siguientes sucursales de la localidad seleccionada no tienen precios actualizados:</p>
+  <ul>
+    <li *ngFor="let branch of noPriceBranches">
+      {{ branch.superName }} - {{ branch.branchName }}
+    </li>
+  </ul>
+</div>
+
+<!-- Referencia de colores -->
+<div class="color-reference mb-3">
+  <div class="d-flex align-items-center mb-1">
+    <span class="cheapest me-2"></span>
+    <span i18n>Precio más barato.</span>
+  </div>
+  <div class="d-flex align-items-center">
+    <span class="cheapestWProducts me-2"></span>
+    <span i18n>Precio más barato con mayor disponibilidad de productos.</span>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover align-middle comparing-table">
     <!-- Encabezado de sucursales -->
     <thead class="table-light">
       <tr>
         <!-- Celda única para "Producto" en el encabezado -->
         <th class="product-col"  colspan="1" i18n>Producto</th>
-        <th *ngFor="let total of comparedData?.totals" class="text-center">
-          {{ total.branchName }} ({{ total.superName }})
-        </th>
+        <ng-container *ngFor="let total of comparedData?.totals">
+          <th class="text-center" *ngIf="shouldShowColumn(total['branchName'])">
+            {{ total.branchName }} ({{ total.superName }})
+          </th>
+        </ng-container>
       </tr>
     </thead>
   
@@ -23,24 +49,30 @@
         </td>
   
         <!-- Precios por sucursal -->
-        <td *ngFor="let price of product.prices" class="text-center">
-          <span *ngIf="price.price !== null && price.price !== undefined; else noPrice" [ngClass]="{'cheapest': price.cheapest}" i18n>
-            {{ price.price | currency:'ARS' }}
-          </span>
-          <ng-template #noPrice>
-            <span class="text-warning" i18n>Sin precio actualizado</span>
-          </ng-template>
-        </td>
-      </tr>
+        <ng-container *ngFor="let price of product.prices">
+          <td *ngIf="shouldShowColumn(price.branchName)" class="text-center">
+            <span *ngIf="price.price !== null && price.price !== undefined; else noPrice" 
+                  [ngClass]="{'cheapest': price.cheapest}" i18n>
+              {{ price.price | currency:'ARS' }}
+            </span>
+            <ng-template #noPrice>
+              <span class="text-warning" i18n>No disponible</span>
+            </ng-template>
+          </td>
+        </ng-container>
     </tbody>
   
     <tfoot>
       <tr>
         <td class="text-end fw-bold" i18n>Total</td>
-        <td *ngFor="let total of comparedData?.totals" class="text-center" [ngClass]="{'cheapest': total.totalCheapest}" i18n>
-          {{ total.totalPrices | currency:'ARS' }}
-        </td>
+        <ng-container *ngFor="let total of comparedData?.totals">
+          <td *ngIf="shouldShowColumn(total.branchName)" class="text-center">
+            <span [ngClass]="{'cheapest': total.totalCheapest, 'cheapestWProducts': total.cheapestWProducts}" i18n>
+              {{ total.totalPrices | currency:'ARS' }}
+            </span>
+          </td>
+        </ng-container>
       </tr>
     </tfoot>
   </table>
-  
+

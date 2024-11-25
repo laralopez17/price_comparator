@@ -43,3 +43,9 @@
     background-color: #0056b3;
   }
   
+  .product-actions .btn-disabled {
+    background-color: #ccc; /* Gris para el estado deshabilitado */
+    color: #666; /* Texto gris oscuro */
+    cursor: not-allowed; /* Cursor apropiado para elementos deshabilitados */
+  }
+  

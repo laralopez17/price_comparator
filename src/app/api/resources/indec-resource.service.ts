@@ -14,15 +14,21 @@ export class IndecResourceService {
 
   private apiUrl = `${environment.apiUrl}/indec`;
 
-  constructor(private _http: HttpClient, @Inject(LOCALE_ID) private locale: string) {}
+  constructor(private _http: HttpClient,
+    @Inject(LOCALE_ID) private locale: string
+  ) {}
+
+  private getHeaders() {
+    return { 'Accept-Language': this.locale };
+  }
 
   getCaterogies(): Observable<IHeading[]> {
-    const headers = { 'Accept-Language': this.locale };
+    const headers = this.getHeaders();
     return this._http.get<IHeading[]>(`${this.apiUrl}/categorias`, { headers });
   }
 
   getProducts(filters: { categoryId?: number | null, productTypeId?: number | null, brandId?: number | null, headingId?: number | null }): Observable<IProduct[]> {
-    const headers = { 'Accept-Language': this.locale };
+    const headers = this.getHeaders();
     return this._http.post<IProduct[]>(`${this.apiUrl}/productos`, filters, { headers });
   }
 

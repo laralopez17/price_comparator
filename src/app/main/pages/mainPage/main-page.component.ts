@@ -1,20 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit  } from '@angular/core';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
 import { ProductDropdownComponent } from '../../components/product-dropdown/product-dropdown.component';
-import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
-import { ProductListComponent } from '../product-list/product-list.component';
+import { Router, RouterModule } from '@angular/router';
 import { IndecResourceService } from '../../../api/resources/indec-resource.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { ModalComponent } from '../../components/modal/modal.component';
 import { NgbAlertModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../../core/services/loader.service';
-import { BranchListComponent } from "../branch-list/branch-list.component";
-import { ComparingTableComponent } from "../comparing-table/comparing-table.component";
-import { WelcomeComponent } from "../welcome/welcome.component";
-import { filter } from 'rxjs';
-import { CartService } from '../../services/cart.service';
+import { ProductEventService } from '../../services/product-event.service';
 
 @Component({
   selector: 'app-main',
@@ -25,11 +19,7 @@ import { CartService } from '../../services/cart.service';
     CommonModule,
     SidebarComponent,
     ProductDropdownComponent,
-    ProductListComponent,
     SharedModule,
-    BranchListComponent,
-    ComparingTableComponent,
-    WelcomeComponent,
     NgbAlertModule
 ],
   templateUrl: './main-page.component.html',
@@ -38,22 +28,19 @@ import { CartService } from '../../services/cart.service';
 export class MainPageComponent implements OnInit {
   activeSideBar: boolean = false;
   activeDropDown: boolean = false;
-  showWelcome: boolean = true;
-  showBranches: boolean = false;
-  showComparedTable: boolean = false;
-  hasSelection: boolean = false;
+  //hasSelection: boolean = false;
+  showAlert: boolean = false;
+  alertMessage: string = '';
 
   constructor(private modalService: NgbModal,
     private router: Router,
-    private loaderService: LoaderService) {
+    private loaderService: LoaderService,
+    private productEventService: ProductEventService) {
     }
 
   ngOnInit() {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        // Verificar si la ruta actual es exactamente '/main'
-        this.showWelcome = event.urlAfterRedirects === '/main';
+      this.productEventService.productAdded$.subscribe((product: string) => {
+        this.triggerAlert(product);
       });
   }
 
@@ -66,14 +53,30 @@ export class MainPageComponent implements OnInit {
   }
 
   toggleBranches(): void {
-    this.showBranches = !this.showBranches;
-    this.showWelcome = false;
-    if (this.showBranches) {
-      this.loaderService.start();
-      ModalComponent.open(this.modalService).subscribe(localityId => {
-        this.router.navigate(['main', 'localidad', localityId]);
-        this.loaderService.complete();
-      });
-    }
+    this.loaderService.start();
+    ModalComponent.open(this.modalService).subscribe(localityId => {
+      const lang = this.router.url.split('/')[1] || 'es-AR';
+      this.router.navigate([lang, 'sucursales', localityId]);
+      this.loaderService.complete();
+    });
+  }
+
+  triggerAlert(product: string): void {
+    this.alertMessage = $localize`¡${product} fue agregado al carrito!`;
+    this.showAlert = true;
+
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000);
+  }
+
+  changeLanguage(lang: string): void {
+    localStorage.setItem('locale_id', lang);
+    document.documentElement.lang = lang;
+    const baseHref = lang === 'en' ? '/en/' : '/'; 
+    document.querySelector('base')?.setAttribute('href', baseHref);
+    this.router.navigate([`${lang}`]).then(() => {
+      window.location.reload();
+    });
   }
 }
