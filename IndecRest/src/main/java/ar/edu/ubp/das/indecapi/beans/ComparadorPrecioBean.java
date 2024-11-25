@@ -1,28 +1,19 @@
 package ar.edu.ubp.das.indecapi.beans;
 
 public class ComparadorPrecioBean {
-    private int superId;
-    private int branchId;
+    private Integer superId;
+    private Integer branchId;
     private Double price;
     private String branchName;
     private String superName;
-    private boolean cheapest;
-    private boolean isUpdated;
+    private Boolean cheapest;
 
-    public boolean isCheapest() {
+    public Boolean isCheapest() {
         return cheapest;
     }
 
-    public void setCheapest(boolean cheapest) {
+    public void setCheapest(Boolean cheapest) {
         this.cheapest = cheapest;
-    }
-
-    public boolean isUpdated() {
-        return isUpdated;
-    }
-
-    public void setUpdated(boolean updated) {
-        isUpdated = updated;
     }
 
     public String getSuperName() {
@@ -49,19 +40,19 @@ public class ComparadorPrecioBean {
         this.price = price;
     }
 
-    public int getBranchId() {
+    public Integer getBranchId() {
         return branchId;
     }
 
-    public void setBranchId(int branchId) {
+    public void setBranchId(Integer branchId) {
         this.branchId = branchId;
     }
 
-    public int getSuperId() {
+    public Integer getSuperId() {
         return superId;
     }
 
-    public void setSuperId(int superId) {
+    public void setSuperId(Integer superId) {
         this.superId = superId;
     }
 

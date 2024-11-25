@@ -1,26 +1,27 @@
 package ar.edu.ubp.das.indecapi.beans;
 
 public class ComparadorTotalBean {
-    private int superId;
-    private int branchId;
+    private Integer superId;
+    private Integer branchId;
     private Double totalPrices;
     private String branchName;
     private String superName;
-    private boolean totalCheapest;
+    private Boolean totalCheapest;
+    private Boolean cheapestWProducts;
 
-    public int getSuperId() {
+    public Integer getSuperId() {
         return superId;
     }
 
-    public void setSuperId(int superId) {
+    public void setSuperId(Integer superId) {
         this.superId = superId;
     }
 
-    public int getBranchId() {
+    public Integer getBranchId() {
         return branchId;
     }
 
-    public void setBranchId(int branchId) {
+    public void setBranchId(Integer branchId) {
         this.branchId = branchId;
     }
 
@@ -48,11 +49,20 @@ public class ComparadorTotalBean {
         this.superName = superName;
     }
 
-    public boolean isTotalCheapest() {
+    public Boolean isTotalCheapest() {
         return totalCheapest;
     }
 
-    public void setTotalCheapest(boolean totalCheapest) {
+    public void setTotalCheapest(Boolean totalCheapest) {
         this.totalCheapest = totalCheapest;
     }
+
+    public Boolean isCheapestWProducts() {
+        return cheapestWProducts;
+    }
+
+    public void setCheapestWProducts(Boolean cheapestWProducts) {
+        this.cheapestWProducts = cheapestWProducts;
+    }
 }
+

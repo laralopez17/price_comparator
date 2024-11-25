@@ -1,22 +1,22 @@
 package ar.edu.ubp.das.indecapi.beans;
 
 public class ComparadorPreciosBean extends PrecioBean {
-    private int superId;
+    private Integer superId;
     private String productName;
     private String image;
     private String brandName;
     private String branchName;
     private String superName;
-    private int isCheapest;
+    private Integer isCheapest;
     private Double totalPrices;
-    private int isTotalCheapest;
-    private boolean isUpdated;
+    private Integer isTotalCheapest;
+    private Integer isCheapestWProducts;
 
-    public int getSuperId() {
+    public Integer getSuperId() {
         return superId;
     }
 
-    public void setSuperId(int superId) {
+    public void setSuperId(Integer superId) {
         this.superId = superId;
     }
 
@@ -44,22 +44,6 @@ public class ComparadorPreciosBean extends PrecioBean {
         this.superName = superName;
     }
 
-    public boolean isCheapest() {
-        return isCheapest == 1; // Casteo de int a boolean
-    }
-
-    public void setIsCheapest(int isCheapest) {
-        this.isCheapest = isCheapest;
-    }
-
-    public boolean isTotalCheapest() {
-        return isTotalCheapest == 1; // Casteo de int a boolean
-    }
-
-    public void setIsTotalCheapest(int isTotalCheapest) {
-        this.isTotalCheapest = isTotalCheapest;
-    }
-
     public String getProductName() {
         return productName;
     }
@@ -84,11 +68,25 @@ public class ComparadorPreciosBean extends PrecioBean {
         this.brandName = brandName;
     }
 
-    public boolean isUpdated() {
-        return isUpdated;
+    public boolean isCheapest() {
+        return isCheapest != null && isCheapest == 1; // Casteo de int a boolean
     }
 
-    public void setUpdated(boolean updated) {
-        isUpdated = updated;
+    public void setIsCheapest(Integer isCheapest) {
+        this.isCheapest = isCheapest;
+    }
+
+    public boolean isTotalCheapest() {
+        return isTotalCheapest != null && isTotalCheapest == 1;
+    }
+
+    public void setIsTotalCheapest(Integer isTotalCheapest) {
+        this.isTotalCheapest = isTotalCheapest;
+    }
+
+    public boolean isCheapestWProducts() { return isCheapestWProducts != null && isCheapestWProducts == 1;}
+
+    public void setIsCheapestWProducts(Integer isCheapestWProducts) {
+        this.isCheapestWProducts = isCheapestWProducts;
     }
 }

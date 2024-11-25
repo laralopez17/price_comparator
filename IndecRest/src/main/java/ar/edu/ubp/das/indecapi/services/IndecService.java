@@ -90,6 +90,7 @@ public class IndecService {
         List<ComparadorPreciosBean> preciosComparados = indecRepository.getPreciosComparados(criteria);
 
         Map<String, List<ComparadorPreciosBean>> preciosPorProducto = preciosComparados.stream()
+                .filter(precio -> precio.getBarcode() != null)
                 .collect(Collectors.groupingBy(ComparadorPreciosBean::getBarcode));
 
         List<ComparadorProductosBean> products = preciosPorProducto.entrySet().stream()
@@ -111,7 +112,6 @@ public class IndecService {
                                 priceResponse.setBranchName(precio.getBranchName());
                                 priceResponse.setSuperName(precio.getSuperName());
                                 priceResponse.setCheapest(precio.isCheapest());
-                                priceResponse.setUpdated(precio.isUpdated());
                                 return priceResponse;
                             })
                             .collect(Collectors.toList());
@@ -140,6 +140,7 @@ public class IndecService {
                             totalResponse.setBranchName(p.getBranchName());
                             totalResponse.setSuperName(p.getSuperName());
                             totalResponse.setTotalCheapest(p.isTotalCheapest());
+                            totalResponse.setCheapestWProducts(p.isCheapestWProducts());
                             return totalResponse;
                         },
                         (total1, total2) -> total1

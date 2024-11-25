@@ -8,12 +8,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="LaEsquinitaRest" />
         <module name="DiscoWS" />
+        <module name="CarrefourRest" />
         <module name="IndecRest" />
+        <module name="DiaWS" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="CarrefourRest" options="-parameters" />
+      <module name="DiaWS" options="-parameters" />
       <module name="DiscoWS" options="-parameters" />
       <module name="IndecRest" options="-parameters" />
       <module name="LaEsquinitaRest" options="-parameters" />

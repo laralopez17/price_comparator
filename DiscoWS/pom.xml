@@ -11,8 +11,8 @@
     <groupId>ar.edu.ubp.das</groupId>
     <artifactId>DiscoWS</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SupermercadoWS</name>
-    <description>SupermercadoWS</description>
+    <name>DiscoWS</name>
+    <description>DiscoWS</description>
     <url/>
     <licenses>
         <license/>
@@ -124,7 +124,6 @@
 
 
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -142,7 +141,7 @@
                 <goal>wsgen</goal>
             </goals>
             <configuration>
-            <sei>ar.edu.ubp.das.supermercadows.services.SupermercadosWS</sei>
+            <sei>ar.edu.ubp.das.discows.services.DiscoWS</sei>
             <destDir>${project.build.directory}/generated-sources/wsgen</destDir>
             <resourceDestDir>${project.build.directory}/generated/wsdl</resourceDestDir>
             <genWsdl>true</genWsdl>
