@@ -39,11 +39,13 @@ export class ComparingTableComponent implements OnInit {
 
   sortComparedData() {
     if (this.comparedData) {
-      this.comparedData.totals.sort((a, b) => a.superId - b.superId);
+      this.comparedData.totals.sort((a, b) => a.superName.localeCompare(b.superName));
   
       this.comparedData.products.forEach(product => {
-        product.prices.sort((a, b) => a.superId - b.superId);
+        product.prices.sort((a, b) => a.superName.localeCompare(b.superName));
       });
+
+      this.comparedData.products.sort((a, b) => a.productName.localeCompare(b.productName));
     }
   }
 
@@ -53,5 +55,9 @@ export class ComparingTableComponent implements OnInit {
 
   getImageUrl(productImage: string): string {
     return productImage ? `assets/images/${productImage}` : 'assets/placeholder-png.webp';
+  }
+
+  get hasComparedData(): boolean {
+    return this.comparedData!.products!.length > 0;
   }
 }
