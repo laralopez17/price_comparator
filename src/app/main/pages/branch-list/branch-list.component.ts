@@ -14,12 +14,17 @@ import { CoreModule } from '../../../core/core.module';
     CommonModule,
     BranchComponent,
     CoreModule
-  ],
+],
   templateUrl: './branch-list.component.html',
   styleUrl: './branch-list.component.scss'
 })
 export class BranchListComponent {
   @Input() branches: IBranch[] = []; 
+  selectedBranch: IBranch | null = null;
+
+  onBranchSelect(branch: IBranch): void {
+    this.selectedBranch = branch;
+  }
 
   constructor(private _route: ActivatedRoute) {}
 
@@ -29,5 +34,6 @@ export class BranchListComponent {
         this.branches = data['sucursales'];
       }
     });
+    window.scrollTo(0, 0);
   }
 }

@@ -34,6 +34,7 @@ export class ComparingTableComponent implements OnInit {
           }));
       }
     });
+    window.scrollTo(0, 0);
   }
 
   sortComparedData() {

@@ -21,6 +21,11 @@ export const routes: Routes = [
                 component: ComparingTableComponent,
                 resolve: { comparedProducts: comparedProductsResolver }
             },
+            { 
+                path: 'productos',
+                component: ProductListComponent,
+                resolve: { productos: productsResolver }
+            },
             {
                 path: 'sucursales/:localityId',
                 component: BranchListComponent,

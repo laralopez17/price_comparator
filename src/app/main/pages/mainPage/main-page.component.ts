@@ -9,6 +9,7 @@ import { ModalComponent } from '../../components/modal/modal.component';
 import { NgbAlertModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../../core/services/loader.service';
 import { ProductEventService } from '../../services/product-event.service';
+import { BarraBusquedaComponent } from "../../../shared/components/barra-busqueda/barra-busqueda.component";
 
 @Component({
   selector: 'app-main',
@@ -20,7 +21,8 @@ import { ProductEventService } from '../../services/product-event.service';
     SidebarComponent,
     ProductDropdownComponent,
     SharedModule,
-    NgbAlertModule
+    NgbAlertModule,
+    BarraBusquedaComponent
 ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
@@ -28,7 +30,6 @@ import { ProductEventService } from '../../services/product-event.service';
 export class MainPageComponent implements OnInit {
   activeSideBar: boolean = false;
   activeDropDown: boolean = false;
-  //hasSelection: boolean = false;
   showAlert: boolean = false;
   alertMessage: string = '';
 

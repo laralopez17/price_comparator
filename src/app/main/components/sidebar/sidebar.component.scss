@@ -2,11 +2,10 @@
   position: fixed; // Fija la barra lateral para que se superponga en lugar de desplazar el contenido
   top: 65px;
   min-height: 100vh;
-  margin-left: -17rem; // Oculto inicialmente
+  margin-left: -25rem; // Oculto inicialmente
   transition: margin 0.25s ease-out;
   background-color: #1c5a97;
   color: #fff;
-  //transition: transform 0.3s ease, margin 0.3s ease;
   transform: translateY(50px);
   
   &.active {

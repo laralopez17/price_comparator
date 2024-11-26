@@ -1,0 +1,113 @@
+.modal-header {
+    background-color: #0c5099; /* Color principal */
+    color: #fff;
+    border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.3rem 0.3rem 0 0;
+  }
+  
+  .modal-header .close {
+    color: #fff;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .modal-header .close:hover {
+    opacity: 1;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    padding: 1.5rem;
+    background-color: #f9f9f9; /* Fondo suave */
+  }
+  
+  .modal-footer {
+    border-top: none;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .modal-footer .btn-outline-dark {
+    border-color: #ccc;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .modal-footer .btn-outline-dark:hover {
+    background-color: #f8f9fa;
+    color: #0c5099;
+  }
+  
+  .modal-footer .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-footer .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #495057;
+  }
+  
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem;
+  }
+  
+  /* **Responsividad** */
+  @media (max-width: 768px) {
+    .modal-header, .modal-footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .modal-footer {
+      gap: 0.5rem;
+    }
+  
+    .form-group {
+      margin-bottom: 1rem;
+    }
+  
+    select {
+      font-size: 0.9rem;
+    }
+  }
+  

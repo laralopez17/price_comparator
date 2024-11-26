@@ -6,17 +6,13 @@
       <div class="branch-schedule">
         <h4 i18n>Horarios:</h4>
         <ul>
-          <li *ngFor="let horario of horariosList">{{ horario }}</li>
+          <li *ngFor="let horario of groupedHorariosList">{{ horario }}</li>
         </ul>
       </div>
       <p i18n>Servicios: {{ branch.branchServices }}</p>
 
       <div class="branch-map">
         <iframe
-          width="100%"
-          height="150"
-          frameborder="0"
-          style="border:0"
           [src]="sanitizer.bypassSecurityTrustResourceUrl('https://maps.google.com/maps?q=' + branch.latitude + ',' + branch.longitude + '&z=15&output=embed')"
           allowfullscreen>
         </iframe>
