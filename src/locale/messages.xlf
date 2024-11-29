@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="es-AR" datatype="plaintext" original="ng2.template">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="ngb.alert.close" datatype="html">
         <source>Close</source>
@@ -382,10 +382,6 @@
           <context context-type="sourcefile">src/app/main/components/product/product.component.html</context>
           <context context-type="linenumber">3,5</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/main/components/product/product.component.html</context>
-          <context context-type="linenumber">7,8</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="3487186781943635090" datatype="html">
         <source>Marca: <x id="INTERPOLATION" equiv-text="{{ product.productBrandName }}"/></source>
@@ -395,18 +391,18 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7708270344948043036" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{ cartService.isInCart(product.productId) ? 'Ya en el carrito' : 'Agregar al carrito' }}"/> </source>
+        <source> <x id="INTERPOLATION" equiv-text="{{ cartService.isInCart(product.productId) ? &apos;Ya en el carrito&apos; : &apos;Agregar al carrito&apos; }}"/> </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/components/product/product.component.html</context>
           <context context-type="linenumber">17,19</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">56,57</context>
+          <context context-type="linenumber">57,58</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">71,72</context>
+          <context context-type="linenumber">72,73</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
@@ -438,49 +434,49 @@
         <source>Precio más barato.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">17,18</context>
+          <context context-type="linenumber">18,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2084024689753011442" datatype="html">
         <source>Precio más barato con mayor disponibilidad de productos.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">21,22</context>
+          <context context-type="linenumber">22,23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7072282989020813528" datatype="html">
         <source>Producto</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">30,31</context>
+          <context context-type="linenumber">31,32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6161151141334614733" datatype="html">
         <source>Imagen de <x id="INTERPOLATION" equiv-text="{{ product.productName }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="233763614064183345" datatype="html">
         <source>Código: <x id="INTERPOLATION" equiv-text="{{ product.barcode }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">47,48</context>
+          <context context-type="linenumber">48,49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2173207350647937239" datatype="html">
         <source>No disponible</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">59,60</context>
+          <context context-type="linenumber">60,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3448462145758383019" datatype="html">
         <source>Total</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">67,68</context>
+          <context context-type="linenumber">68,69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="794240875868117354" datatype="html">
@@ -529,7 +525,7 @@
         <source>¡<x id="PH" equiv-text="product"/> fue agregado al carrito!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7096544546464981822" datatype="html">
@@ -571,7 +567,7 @@
         <source>Buscar productos...</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/barra-busqueda/barra-busqueda.component.html</context>
-          <context context-type="linenumber">4,5</context>
+          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
     </body>

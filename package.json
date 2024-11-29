@@ -7,7 +7,7 @@
     "watch": "ng build --watch --configuration development",
     "start": "ng serve --open",
     "start-es": "ng serve --open --configuration=development-es",
-    "start-en": "ng serve --open --port 4200 --configuration=development-en",
+    "start-en": "ng serve --open --port 4201 --configuration=development-en",
     "extract-i18n": "ng extract-i18n --output-path=src/locale && xliffmerge --profile xliffmerge.json",
     "test": "ng test"
   },

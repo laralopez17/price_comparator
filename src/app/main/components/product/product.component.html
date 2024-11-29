@@ -4,7 +4,7 @@
   </div>
   <div class="product-info">
     <h3>{{ product.productName }}</h3>
-    <p i18n>{{ product.productDesc || 'No hay descripcion disponible' }}</p>
+    <p *ngIf="product.productDesc">{{ product.productDesc }}</p>
     <p i18n>Marca: {{ product.productBrandName }}</p>
   </div>
   <div class="product-actions">

@@ -30,7 +30,7 @@
         <!-- Celda única para "Producto" en el encabezado -->
         <th class="product-col"  colspan="1" i18n>Producto</th>
         <ng-container *ngFor="let total of comparedData?.totals">
-          <th class="text-center" *ngIf="shouldShowColumn(total['branchName'])">
+          <th class="text-center" *ngIf="shouldShowColumn(total['branchName'])" [ngClass]="{'highlight-column': total.cheapestWProducts}">
             {{ total.branchName }} ({{ total.superName }})
           </th>
         </ng-container>
@@ -51,13 +51,13 @@
   
         <!-- Precios por sucursal -->
         <ng-container *ngFor="let price of product.prices">
-          <td *ngIf="shouldShowColumn(price.branchName)" class="text-center">
+          <td *ngIf="shouldShowColumn(price.branchName)" class="text-center" >
             <span *ngIf="price.price !== null && price.price !== undefined; else noPrice" 
                   [ngClass]="{'cheapest': price.cheapest}" i18n>
               {{ price.price | currency:'ARS' }}
             </span>
             <ng-template #noPrice>
-              <span class="text-warning" i18n>No disponible</span>
+              <span class="text-danger" i18n>No disponible</span>
             </ng-template>
           </td>
         </ng-container>
@@ -68,7 +68,7 @@
         <td class="text-end fw-bold" i18n>Total</td>
         <ng-container *ngFor="let total of comparedData?.totals">
           <td *ngIf="shouldShowColumn(total.branchName)" class="text-center">
-            <span [ngClass]="{'cheapest': total.totalCheapest, 'cheapestWProducts': total.cheapestWProducts}" i18n>
+            <span [ngClass]="{'cheapestWProducts': total.cheapestWProducts}" i18n>
               {{ total.totalPrices | currency:'ARS' }}
             </span>
           </td>

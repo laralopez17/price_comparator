@@ -4,6 +4,5 @@ export interface ITotalCompared {
     totalPrices: number | null;
     branchName: string;
     superName: string;
-    totalCheapest: boolean;
     cheapestWProducts: boolean;
 }

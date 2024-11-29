@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+    min-height: 22rem;
   }
   
   .product-card:hover {
@@ -39,6 +40,7 @@
   
   .product-actions {
     margin-top: auto; /* Empuja las acciones hacia abajo */
+    margin-bottom: 15px
   }
   .product-actions .btn {
     margin-top: 10px;

@@ -68,8 +68,9 @@
           font-weight: bold;
         }
     
-        .text-warning {
-          color: #ffc107;
+        .text-danger {
+          font-weight: bold;
+          color: #ff0707;
         }
       }
 
@@ -78,12 +79,9 @@
         font-size: 0.95rem;
         font-weight: bold;
     
-        .cheapest {
-          color: #007bff;
-        }
-    
         .cheapestWProducts {
-          color: #28a745;
+          background-color: #28a745;
+          font-weight: bold;
         }
     }
 }
@@ -148,4 +146,10 @@
     .cheapestWProducts {
       background-color: #28a745;
     }
+  }
+
+  .highlight-column {
+    background-color: #00ff3c4f; /* Verde para resaltar */
+    color: white; /* Texto en blanco para que resalte más */
+    font-weight: bold; /* Hacer el texto más destacado */
   }
