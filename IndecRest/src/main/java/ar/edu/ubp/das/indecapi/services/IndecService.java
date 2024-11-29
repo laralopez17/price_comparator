@@ -89,6 +89,7 @@ public class IndecService {
 
         List<ComparadorPreciosBean> preciosComparados = indecRepository.getPreciosComparados(criteria);
 
+        System.out.println(gson.toJson(preciosComparados));
         Map<String, List<ComparadorPreciosBean>> preciosPorProducto = preciosComparados.stream()
                 .filter(precio -> precio.getBarcode() != null)
                 .collect(Collectors.groupingBy(ComparadorPreciosBean::getBarcode));
@@ -107,9 +108,7 @@ public class IndecService {
                             .map(precio -> {
                                 ComparadorPrecioBean priceResponse = new ComparadorPrecioBean();
                                 priceResponse.setSuperId(precio.getSuperId());
-                                priceResponse.setBranchId(precio.getBranchId());
                                 priceResponse.setPrice(precio.getPrice());
-                                priceResponse.setBranchName(precio.getBranchName());
                                 priceResponse.setSuperName(precio.getSuperName());
                                 priceResponse.setCheapest(precio.isCheapest());
                                 return priceResponse;
@@ -137,9 +136,7 @@ public class IndecService {
                             totalResponse.setSuperId(p.getSuperId());
                             totalResponse.setBranchId(p.getBranchId());
                             totalResponse.setTotalPrices(p.getTotalPrices());
-                            totalResponse.setBranchName(p.getBranchName());
                             totalResponse.setSuperName(p.getSuperName());
-                            totalResponse.setTotalCheapest(p.isTotalCheapest());
                             totalResponse.setCheapestWProducts(p.isCheapestWProducts());
                             return totalResponse;
                         },
@@ -150,6 +147,8 @@ public class IndecService {
         CarritoFinalBean response = new CarritoFinalBean();
         response.setProducts(products);
         response.setTotals(totals);
+
+        System.out.println(gson.toJson(response));
 
         return response;
     }

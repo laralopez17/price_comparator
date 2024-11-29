@@ -5,11 +5,9 @@ public class ComparadorPreciosBean extends PrecioBean {
     private String productName;
     private String image;
     private String brandName;
-    private String branchName;
     private String superName;
     private Integer isCheapest;
     private Double totalPrices;
-    private Integer isTotalCheapest;
     private Integer isCheapestWProducts;
 
     public Integer getSuperId() {
@@ -18,14 +16,6 @@ public class ComparadorPreciosBean extends PrecioBean {
 
     public void setSuperId(Integer superId) {
         this.superId = superId;
-    }
-
-    public String getBranchName() {
-        return branchName;
-    }
-
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
     }
 
     public Double getTotalPrices() {
@@ -74,14 +64,6 @@ public class ComparadorPreciosBean extends PrecioBean {
 
     public void setIsCheapest(Integer isCheapest) {
         this.isCheapest = isCheapest;
-    }
-
-    public boolean isTotalCheapest() {
-        return isTotalCheapest != null && isTotalCheapest == 1;
-    }
-
-    public void setIsTotalCheapest(Integer isTotalCheapest) {
-        this.isTotalCheapest = isTotalCheapest;
     }
 
     public boolean isCheapestWProducts() { return isCheapestWProducts != null && isCheapestWProducts == 1;}
