@@ -5,7 +5,7 @@
   <p i18n>Las siguientes sucursales de la localidad seleccionada no tienen precios actualizados:</p>
   <ul>
     <li *ngFor="let branch of noPriceBranches">
-      {{ branch.superName }} - {{ branch.branchName }}
+      {{ branch.superName }}
     </li>
   </ul>
 </div>
@@ -13,10 +13,6 @@
 <ng-container *ngIf="hasComparedData">
 <!-- Referencia de colores -->
 <div class="color-reference mb-3">
-  <div class="d-flex align-items-center mb-1">
-    <span class="cheapest me-2"></span>
-    <span i18n>Precio más barato.</span>
-  </div>
   <div class="d-flex align-items-center">
     <span class="cheapestWProducts me-2"></span>
     <span i18n>Precio más barato con mayor disponibilidad de productos.</span>
@@ -30,8 +26,8 @@
         <!-- Celda única para "Producto" en el encabezado -->
         <th class="product-col"  colspan="1" i18n>Producto</th>
         <ng-container *ngFor="let total of comparedData?.totals">
-          <th class="text-center" *ngIf="shouldShowColumn(total['branchName'])" [ngClass]="{'highlight-column': total.cheapestWProducts}">
-            {{ total.branchName }} ({{ total.superName }})
+          <th class="text-center" *ngIf="shouldShowColumn(total['superName'])" [ngClass]="{'highlight-column': total.cheapestWProducts}">
+            {{ total.superName }}
           </th>
         </ng-container>
       </tr>
@@ -51,7 +47,7 @@
   
         <!-- Precios por sucursal -->
         <ng-container *ngFor="let price of product.prices">
-          <td *ngIf="shouldShowColumn(price.branchName)" class="text-center" >
+          <td *ngIf="shouldShowColumn(price.superName)" class="text-center">
             <span *ngIf="price.price !== null && price.price !== undefined; else noPrice" 
                   [ngClass]="{'cheapest': price.cheapest}" i18n>
               {{ price.price | currency:'ARS' }}
@@ -67,8 +63,8 @@
       <tr>
         <td class="text-end fw-bold" i18n>Total</td>
         <ng-container *ngFor="let total of comparedData?.totals">
-          <td *ngIf="shouldShowColumn(total.branchName)" class="text-center">
-            <span [ngClass]="{'cheapestWProducts': total.cheapestWProducts}" i18n>
+          <td *ngIf="shouldShowColumn(total.superName)" class="text-center" [ngClass]="{'cheapestWProducts': total.cheapestWProducts}">
+            <span i18n>
               {{ total.totalPrices | currency:'ARS' }}
             </span>
           </td>

@@ -49,8 +49,8 @@ export class ComparingTableComponent implements OnInit {
     }
   }
 
-  shouldShowColumn(branchName: string): boolean {
-    return !this.noPriceBranches.some((branch) => branch.branchName === branchName);
+  shouldShowColumn(superName: string): boolean {
+    return !this.noPriceBranches.some((branch) => branch.superName === superName);
   }
 
   getImageUrl(productImage: string): string {

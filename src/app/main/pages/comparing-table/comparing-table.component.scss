@@ -56,6 +56,12 @@
           font-weight: 600;
           color: #555;
         }
+
+        .highlight-column {
+          background-color: #28a745; /* Verde para resaltar */
+          color: white; /* Texto en blanco para que resalte más */
+          font-weight: bold; /* Hacer el texto más destacado */
+        }
     }
 
     tbody {
@@ -81,6 +87,7 @@
     
         .cheapestWProducts {
           background-color: #28a745;
+          color: white;
           font-weight: bold;
         }
     }
@@ -131,25 +138,11 @@
     flex-wrap: wrap; // Permite que los elementos se acomoden en varias filas si es necesario
     gap: 1rem; // Espaciado entre los elementos
   
-    .cheapest,
     .cheapestWProducts {
       display: inline-block;
       width: 20px;
       height: 20px;
       border-radius: 50%;
-    }
-  
-    .cheapest {
-      background-color: #007bff;
-    }
-  
-    .cheapestWProducts {
       background-color: #28a745;
     }
-  }
-
-  .highlight-column {
-    background-color: #00ff3c4f; /* Verde para resaltar */
-    color: white; /* Texto en blanco para que resalte más */
-    font-weight: bold; /* Hacer el texto más destacado */
   }
