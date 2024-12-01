@@ -9,7 +9,7 @@ import { ModalComponent } from '../../components/modal/modal.component';
 import { NgbAlertModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../../core/services/loader.service';
 import { ProductEventService } from '../../services/product-event.service';
-import { BarraBusquedaComponent } from "../../../shared/components/barra-busqueda/barra-busqueda.component";
+import { BarraBusquedaComponent } from "../../components/barra-busqueda/barra-busqueda.component";
 
 @Component({
   selector: 'app-main',

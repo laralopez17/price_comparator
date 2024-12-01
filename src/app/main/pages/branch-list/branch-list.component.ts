@@ -5,6 +5,8 @@ import { IBranch } from '../../../api/models/i-branch';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
+import { FormsModule } from '@angular/forms';
+import { FilterProductsPipe } from "../../../shared/pipes/filter-branches.pipe";
 
 @Component({
   selector: 'app-branch-list',
@@ -13,7 +15,9 @@ import { CoreModule } from '../../../core/core.module';
     RouterModule,
     CommonModule,
     BranchComponent,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    FilterProductsPipe
 ],
   templateUrl: './branch-list.component.html',
   styleUrl: './branch-list.component.scss'
@@ -21,6 +25,7 @@ import { CoreModule } from '../../../core/core.module';
 export class BranchListComponent {
   @Input() branches: IBranch[] = []; 
   selectedBranch: IBranch | null = null;
+  searchTerm: string = '';
 
   onBranchSelect(branch: IBranch): void {
     this.selectedBranch = branch;

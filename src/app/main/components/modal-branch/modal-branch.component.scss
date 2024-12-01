@@ -1,0 +1,82 @@
+
+.modal-content {
+    padding: 2rem;
+    border-radius: 12px;
+    width: auto;
+    overflow-y: auto;
+    max-height: 85vh; 
+    background: #f9f9f9;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  padding: 0.5rem 1rem; 
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-title {
+  font-size: 1.2rem; 
+  color: #333;
+  margin: 0; 
+}
+
+.modal-footer {
+  padding: 0.5rem 1rem; 
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-footer .btn {
+  margin-left: 0.25rem; 
+  padding: 0.5rem 1rem; 
+}
+
+.modal-body {
+  overflow-y: auto;
+  padding: 2rem; 
+  max-height: calc(85vh - 6rem); 
+}
+  
+
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1rem;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.branch-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
+}
+  
+.branch-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.branch-card img {
+  max-width: 100%; 
+  border-radius: 6px;
+}
+
+
+@media (max-width: 992px) {
+  .item-list {
+    grid-template-columns: 1fr;
+  }
+}
+  
+@media (min-width: 993px) and (max-width: 1200px) {
+  .item-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  
+::ng-deep .modal-dialog {
+  max-width: 50% !important;
+  margin: 2rem auto; 
+}
+  

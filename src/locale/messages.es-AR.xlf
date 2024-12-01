@@ -370,33 +370,28 @@
       <trans-unit id="7072282989020813528" datatype="html">
         <source>Producto</source><target state="final">Producto</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">31</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">27</context></context-group></trans-unit>
       <trans-unit id="6161151141334614733" datatype="html">
         <source>Imagen de <x id="INTERPOLATION" equiv-text="{{ product.productName }}"/></source><target state="final">Imagen de <x id="INTERPOLATION" equiv-text="{{ product.productName }}"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">45</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">43</context></context-group></trans-unit>
       <trans-unit id="233763614064183345" datatype="html">
         <source>Código: <x id="INTERPOLATION" equiv-text="{{ product.barcode }}"/></source><target state="final">Código: <x id="INTERPOLATION" equiv-text="{{ product.barcode }}"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="2173207350647937239" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">46</context></context-group></trans-unit><trans-unit id="2173207350647937239" datatype="html">
         <source>No disponible</source><target state="final">No disponible</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">60</context></context-group></trans-unit><trans-unit id="7708270344948043036" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="7708270344948043036" datatype="html">
         <source> <x id="INTERPOLATION" equiv-text="{{ cartService.isInCart(product.productId) ? 'Ya en el carrito' : 'Agregar al carrito' }}"/> </source><target state="final"> <x id="INTERPOLATION" equiv-text="{{ cartService.isInCart(product.productId) ? 'Ya en el carrito' : 'Agregar al carrito' }}"/> </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/main/components/product/product.component.html</context><context context-type="linenumber">17</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">57</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">72</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context><context context-type="linenumber">49</context></context-group></trans-unit><trans-unit id="8227075659548953639" datatype="html">
-        <source> 'No hay descripcion disponible'
-</source><target state="final"> 'No hay descripcion disponible'
-</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/main/components/product/product.component.html</context>
-          <context context-type="linenumber">23,24</context>
-        </context-group>
-      </trans-unit><trans-unit id="4999164958689917849" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/main/components/product/product.component.html</context><context context-type="linenumber">17</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">55</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">70</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context><context context-type="linenumber">49</context></context-group></trans-unit><trans-unit id="4999164958689917849" datatype="html">
         <source>¡Encuentra tu sucursal!</source><target state="final">¡Encuentra tu sucursal!</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/main/components/modal-branch/modal-branch.component.html</context><context context-type="linenumber">3</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/branch-list/branch-list.component.html</context><context context-type="linenumber">1</context></context-group></trans-unit><trans-unit id="3486215743549371021" datatype="html">
+        <source>Error al cargar las sucursales:</source><target state="final">Error al cargar las sucursales:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/main/pages/branch-list/branch-list.component.html</context>
-          <context context-type="linenumber">1,2</context>
+          <context context-type="sourcefile">src/app/main/components/modal-branch/modal-branch.component.ts</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit><trans-unit id="5532616869785022910" datatype="html">
         <source> Comparación de precios</source><target state="final"> Comparación de precios</target>
@@ -410,18 +405,15 @@
           <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
           <context context-type="linenumber">5,6</context>
         </context-group>
-      </trans-unit><trans-unit id="7893772928705659883" datatype="html">
-        <source>Precio más barato.</source><target state="final">Precio más barato.</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">18</context></context-group></trans-unit><trans-unit id="2084024689753011442" datatype="html">
+      </trans-unit><trans-unit id="2084024689753011442" datatype="html">
         <source>Precio más barato con mayor disponibilidad de productos.</source><target state="final">Precio más barato con mayor disponibilidad de productos.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">22</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">18</context></context-group></trans-unit>
       
       <trans-unit id="3448462145758383019" datatype="html">
         <source>Total</source><target state="final">Total</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">68</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context><context context-type="linenumber">66</context></context-group></trans-unit>
       <trans-unit id="794240875868117354" datatype="html">
         <source> Categorías</source><target state="final"> Categorías</target>
         

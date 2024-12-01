@@ -25,9 +25,11 @@
       <tr>
         <!-- Celda única para "Producto" en el encabezado -->
         <th class="product-col"  colspan="1" i18n>Producto</th>
-        <ng-container *ngFor="let total of comparedData?.totals">
+        <ng-container *ngFor="let total of comparedData?.totals">           
           <th class="text-center" *ngIf="shouldShowColumn(total['superName'])" [ngClass]="{'highlight-column': total.cheapestWProducts}">
-            {{ total.superName }}
+            <a (click)="openModal(total.superId)">
+              {{ total.superName }}
+            </a>
           </th>
         </ng-container>
       </tr>

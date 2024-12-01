@@ -9,6 +9,7 @@ import { ComparingTableComponent } from './main/pages/comparing-table/comparing-
 import { comparedProductsResolver } from './main/resolvers/compared-products.resolver';
 import { WelcomeComponent } from './main/pages/welcome/welcome.component';
 
+
 export const routes: Routes = [
     {
         path:':lang', 

@@ -48,6 +48,13 @@ export class IndecResourceService {
   });
   }
 
+  getBranchesBySuper(superId: number): Observable<IBranch[]> {
+    //superId = 2;
+    return this._http.post<IBranch[]>(`${this.apiUrl}/info-sucursales-super`, superId, {
+      headers: { 'Content-Type': 'application/json' }
+  });
+  }
+
   getComparedProducts( localityId: number, barcode: string[] ): Observable<IFinalCompared[]> {
     const criteria = {
       localityId: localityId,

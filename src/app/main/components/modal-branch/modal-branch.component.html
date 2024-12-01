@@ -1,0 +1,14 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title" i18n>¡Encuentra tu sucursal!</h3>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="item-list">
+      <app-branch *ngFor="let branch of branches" [branch]="branch"></app-branch>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Cerrar</button>
+  </div>
+</div>

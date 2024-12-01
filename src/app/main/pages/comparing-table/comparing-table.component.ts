@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IFinalCompared } from '../../../api/models/i-final-compared';
 import { ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../../../core/services/loader.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalBranchComponent } from '../../components/modal-branch/modal-branch.component';
 
 @Component({
   selector: 'app-comparing-table',
@@ -18,7 +21,11 @@ export class ComparingTableComponent implements OnInit {
   noPriceBranches: { branchName: string; superName: string }[] = [];
   @Output() showTable: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private loaderService: LoaderService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
@@ -59,5 +66,25 @@ export class ComparingTableComponent implements OnInit {
 
   get hasComparedData(): boolean {
     return this.comparedData!.products!.length > 0;
+  }
+
+  openModal(superId: number): void {
+    this.loaderService.start();
+    const modalRef = this.modalService.open(ModalBranchComponent);
+    modalRef.componentInstance.superId = superId;
+    modalRef.componentInstance.superId = superId;
+
+    modalRef.result
+      .then(
+        () => {
+          this.loaderService.complete();
+        },
+        () => {
+          this.loaderService.complete();
+        }
+      )
+      .catch(() => {
+        this.loaderService.complete();
+      });
   }
 }

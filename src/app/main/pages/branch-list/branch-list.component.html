@@ -1,5 +1,6 @@
    <h3 i18n>¡Encuentra tu sucursal!</h3>
+   <input type="text" placeholder="Buscar por nombre, dirección o supermercado..." [(ngModel)]="searchTerm" class="form-control mb-3" />
   <div class="item-list">
-    <app-branch *ngFor="let branch of branches" [branch]="branch"></app-branch>
+    <app-branch *ngFor="let branch of branches | filterBranches: searchTerm" [branch]="branch"></app-branch>
   </div>
  

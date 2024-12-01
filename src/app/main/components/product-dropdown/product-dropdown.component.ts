@@ -46,13 +46,12 @@ export class ProductDropdownComponent implements OnInit{
     ModalComponent.open(this.modalService).subscribe(localityId => {
       const lang = this.router.url.split('/')[1] || 'es-AR';
       const barcodes = this.products.map(p => p.productId);
-      console.log(barcodes);
+      
       this.router.navigate([lang, 'comparador'], {
         queryParams: { localityId, barcodes }
       });
       this.loaderService.complete();
     });
-
   }
 
   removeProduct(product: IProduct) {
