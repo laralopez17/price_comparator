@@ -56,4 +56,11 @@ public class IndecResource {
         List<InformacionSucursalBean> response = indecService.obtenerInformacion(nroLocalidad);
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/info-sucursales-super")
+    public ResponseEntity<List<InformacionSucursalBean>> obtenerInfoSucursalesSuper(@RequestBody int nroSupermercado) {
+        List<InformacionSucursalBean> response = indecService.obtenerInfoSucursalesSuper(nroSupermercado);
+
+        return ResponseEntity.ok(response);
+    }
 }

@@ -88,8 +88,6 @@ public class IndecService {
     public CarritoFinalBean obtenerPreciosComparados(ProductoCriteriaBean criteria) {
 
         List<ComparadorPreciosBean> preciosComparados = indecRepository.getPreciosComparados(criteria);
-
-        System.out.println(gson.toJson(preciosComparados));
         Map<String, List<ComparadorPreciosBean>> preciosPorProducto = preciosComparados.stream()
                 .filter(precio -> precio.getBarcode() != null)
                 .collect(Collectors.groupingBy(ComparadorPreciosBean::getBarcode));
@@ -148,12 +146,14 @@ public class IndecService {
         response.setProducts(products);
         response.setTotals(totals);
 
-        System.out.println(gson.toJson(response));
-
         return response;
     }
 
     public List<InformacionSucursalBean> obtenerInformacion(int nroLocalidad) {
         return indecRepository.getInformacionSucursales(nroLocalidad);
+    }
+
+    public List<InformacionSucursalBean> obtenerInfoSucursalesSuper(int nroSupermercado) {
+        return indecRepository.getInfoSucursalesSuper(nroSupermercado);
     }
 }

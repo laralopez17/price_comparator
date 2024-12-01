@@ -64,5 +64,11 @@ public class IndecRepository {
                 .addValue("nro_localidad", nroLocalidad);
         return jdbcCallFactory.executeQuery("get_informacion_sucursales", "dbo", params, "informacionSucursales", InformacionSucursalBean.class);
     }
+
+    public List<InformacionSucursalBean> getInfoSucursalesSuper(int nroSupermercado) {
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("nro_supermercado", nroSupermercado);
+        return jdbcCallFactory.executeQuery("get_info_sucursales_super", "dbo", params, "informacionSucursales", InformacionSucursalBean.class);
+    }
 }
 
