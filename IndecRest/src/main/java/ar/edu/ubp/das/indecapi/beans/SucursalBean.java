@@ -3,6 +3,7 @@ package ar.edu.ubp.das.indecapi.beans;
 public class SucursalBean {
     private int branchId;
     private String branchName;
+    private String superName;
     private String street;
     private int streetId;
     private String phone;
@@ -90,5 +91,13 @@ public class SucursalBean {
 
     public void setLongitude(float longitude) {
         this.longitude = longitude;
+    }
+
+    public String getSuperName() {
+        return superName;
+    }
+
+    public void setSuperName(String superName) {
+        this.superName = superName;
     }
 }

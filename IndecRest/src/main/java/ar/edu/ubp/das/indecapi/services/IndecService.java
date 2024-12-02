@@ -109,6 +109,7 @@ public class IndecService {
                                 priceResponse.setPrice(precio.getPrice());
                                 priceResponse.setSuperName(precio.getSuperName());
                                 priceResponse.setCheapest(precio.isCheapest());
+                                priceResponse.setCheapestWProducts(precio.isCheapestWProducts());
                                 return priceResponse;
                             })
                             .collect(Collectors.toList());

@@ -5,6 +5,7 @@ public class ComparadorPrecioBean {
     private Double price;
     private String superName;
     private Boolean cheapest;
+    private Boolean cheapestWProducts;
 
     public Boolean isCheapest() {
         return cheapest;
@@ -38,4 +39,11 @@ public class ComparadorPrecioBean {
         this.superId = superId;
     }
 
+    public Boolean getCheapestWProducts() {
+        return cheapestWProducts;
+    }
+
+    public void setCheapestWProducts(Boolean cheapestWProducts) {
+        this.cheapestWProducts = cheapestWProducts;
+    }
 }
