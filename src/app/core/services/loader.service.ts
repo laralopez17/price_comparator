@@ -23,5 +23,4 @@ export class LoaderService {
   complete(): void {
     this._subject.next(<Loader>{ loaded: false });
   }
-  
 }

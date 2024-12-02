@@ -48,7 +48,6 @@ export class ProductListComponent {
   }
 
   applyFilter(): void {
-    console.log('Filtrando productos con término:', this.searchTerm);
     this.filteredProducts = this.products.filter(product =>
       product.productName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );

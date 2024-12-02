@@ -65,6 +65,8 @@
           background-color: #28a745; /* Verde para resaltar */
           color: white; /* Texto en blanco para que resalte más */
           font-weight: bold; /* Hacer el texto más destacado */
+          border: 2px solid #28a745;
+          box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2), -3px 0 5px rgba(0, 0, 0, 0.2);
         }
     }
 
@@ -72,12 +74,19 @@
         tr:hover {
           background-color: #f9f9f9; // Efecto de hover sutil
         }
-    
+
         .cheapest {
           color: #28a745;
           font-weight: bold;
         }
-    
+
+        .highlight-column {
+          //background-color: #79eb946c;
+          border-left: 2px solid #28a745;
+          border-right: 2px solid #28a745;
+          box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2), -3px 0 5px rgba(0, 0, 0, 0.2);
+        }
+
         .text-danger {
           font-weight: bold;
           color: #ff0707;
@@ -89,10 +98,12 @@
         font-size: 0.95rem;
         font-weight: bold;
     
-        .cheapestWProducts {
+        .highlight-column {
           background-color: #28a745;
           color: white;
           font-weight: bold;
+          border: 2px solid #28a745;
+          box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2), -3px 0 5px rgba(0, 0, 0, 0.2);
         }
     }
 }

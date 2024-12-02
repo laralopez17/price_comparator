@@ -49,7 +49,7 @@
   
         <!-- Precios por sucursal -->
         <ng-container *ngFor="let price of product.prices">
-          <td *ngIf="shouldShowColumn(price.superName)" class="text-center">
+          <td *ngIf="shouldShowColumn(price.superName)" class="text-center" [ngClass]="{'highlight-column': price.cheapestWProducts}">
             <span *ngIf="price.price !== null && price.price !== undefined; else noPrice" 
                   [ngClass]="{'cheapest': price.cheapest}" i18n>
               {{ price.price | currency:'ARS' }}
@@ -65,7 +65,7 @@
       <tr>
         <td class="text-end fw-bold" i18n>Total</td>
         <ng-container *ngFor="let total of comparedData?.totals">
-          <td *ngIf="shouldShowColumn(total.superName)" class="text-center" [ngClass]="{'cheapestWProducts': total.cheapestWProducts}">
+          <td *ngIf="shouldShowColumn(total.superName)" class="text-center" [ngClass]="{'highlight-column': total.cheapestWProducts}">
             <span i18n>
               {{ total.totalPrices | currency:'ARS' }}
             </span>

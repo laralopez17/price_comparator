@@ -10,6 +10,8 @@ import { NgbAlertModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../../core/services/loader.service';
 import { ProductEventService } from '../../services/product-event.service';
 import { BarraBusquedaComponent } from "../../components/barra-busqueda/barra-busqueda.component";
+import { SplashComponent } from '../../components/splash/splash.component';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-main',
@@ -22,7 +24,8 @@ import { BarraBusquedaComponent } from "../../components/barra-busqueda/barra-bu
     ProductDropdownComponent,
     SharedModule,
     NgbAlertModule,
-    BarraBusquedaComponent
+    BarraBusquedaComponent,
+    SplashComponent
 ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
@@ -32,6 +35,7 @@ export class MainPageComponent implements OnInit {
   activeDropDown: boolean = false;
   showAlert: boolean = false;
   alertMessage: string = '';
+  showSplash = true;
 
   constructor(private modalService: NgbModal,
     private router: Router,
@@ -40,9 +44,13 @@ export class MainPageComponent implements OnInit {
     }
 
   ngOnInit() {
-      this.productEventService.productAdded$.subscribe((product: string) => {
-        this.triggerAlert(product);
-      });
+    setTimeout(() => {
+      this.showSplash = false;
+    }, 3000);
+
+    this.productEventService.productAdded$.subscribe((product: string) => {
+      this.triggerAlert(product);
+    });
   }
 
   toggleSideBar(): void {
@@ -72,12 +80,12 @@ export class MainPageComponent implements OnInit {
   }
 
   changeLanguage(lang: string): void {
-    localStorage.setItem('locale_id', lang);
-    document.documentElement.lang = lang;
-    const baseHref = lang === 'en' ? '/en/' : '/'; 
-    document.querySelector('base')?.setAttribute('href', baseHref);
-    this.router.navigate([`${lang}`]).then(() => {
-      window.location.reload();
-    });
+    const currentPath = this.router.url;
+    let languagePrefix = `/` + currentPath.split('/')[1];
+
+    let urlWithoutLang = currentPath.replace(languagePrefix, '');
+
+    const url = lang === 'en' ? environment.urlEn : environment.urlEs;
+    window.location.href = `${url}${urlWithoutLang}`;
   }
 }

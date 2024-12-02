@@ -14,12 +14,13 @@ export class IndecResourceService {
 
   private apiUrl = `${environment.apiUrl}/indec`;
 
-  constructor(private _http: HttpClient,
-    @Inject(LOCALE_ID) private locale: string
+  constructor(private _http: HttpClient /*,
+    @Inject(LOCALE_ID) private locale: string*/
   ) {}
 
   private getHeaders() {
-    return { 'Accept-Language': this.locale };
+    const locale = localStorage.getItem('locale_id') || 'es-AR';
+    return { 'Accept-Language': locale };
   }
 
   getCaterogies(): Observable<IHeading[]> {

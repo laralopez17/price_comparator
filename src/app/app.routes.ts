@@ -12,13 +12,13 @@ import { WelcomeComponent } from './main/pages/welcome/welcome.component';
 
 export const routes: Routes = [
     {
-        path:':lang', 
+        path: ':lang',
         component: MainPageComponent,
         resolve: {categorias: headingsResolver},
         children: [
             { path: 'bienvenida', component: WelcomeComponent },
             {
-                path: 'comparador',
+                path: 'comparador/:localityId/:barcodes',
                 component: ComparingTableComponent,
                 resolve: { comparedProducts: comparedProductsResolver }
             },
@@ -50,5 +50,5 @@ export const routes: Routes = [
             { path: '**', redirectTo: 'bienvenida' }
         ]
     },
-    { path: '**', redirectTo: ':lang/bienvenida'},
+    { path: '**', redirectTo: 'es-AR/bienvenida' },
 ];

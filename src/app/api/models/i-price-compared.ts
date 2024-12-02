@@ -5,5 +5,5 @@ export interface IPriceCompared {
     branchName: string;
     superName: string;
     cheapest: boolean;
-    isUpdated: boolean;    
+    cheapestWProducts: boolean;    
 }

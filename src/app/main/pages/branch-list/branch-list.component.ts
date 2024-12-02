@@ -26,6 +26,7 @@ export class BranchListComponent {
   @Input() branches: IBranch[] = []; 
   selectedBranch: IBranch | null = null;
   searchTerm: string = '';
+  groupedBranches: any = {};
 
   onBranchSelect(branch: IBranch): void {
     this.selectedBranch = branch;
