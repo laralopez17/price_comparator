@@ -243,6 +243,13 @@
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7040508405366739107" datatype="html">
+        <source>Buscar productos...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/components/barra-busqueda/barra-busqueda.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="6818444895440371135" datatype="html">
         <source>Dirección: <x id="INTERPOLATION" equiv-text="{{ branch.address }}"/></source>
         <context-group purpose="location">
@@ -408,23 +415,18 @@
           <context context-type="linenumber">8,10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7708270344948043036" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{ cartService.isInCart(product.productId) ? 'Ya en el carrito' : 'Agregar al carrito' }}"/> </source>
+      <trans-unit id="8395106229351986" datatype="html">
+        <source>Ya en el carrito</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/components/product/product.component.html</context>
-          <context context-type="linenumber">17,19</context>
+          <context context-type="linenumber">16</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="4795392150880237671" datatype="html">
+        <source>Agregar al carrito</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">55,56</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
-          <context context-type="linenumber">70,71</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
-          <context context-type="linenumber">49,52</context>
+          <context context-type="sourcefile">src/app/main/components/product/product.component.html</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5532616869785022910" datatype="html">
@@ -469,6 +471,21 @@
           <context context-type="linenumber">46,47</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7708270344948043036" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ price.price | currency:'ARS' }}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
+          <context context-type="linenumber">55,56</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/pages/comparing-table/comparing-table.component.html</context>
+          <context context-type="linenumber">70,71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
+          <context context-type="linenumber">50,53</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2173207350647937239" datatype="html">
         <source>No disponible</source>
         <context-group purpose="location">
@@ -487,49 +504,49 @@
         <source> Categorías</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
-          <context context-type="linenumber">23,24</context>
+          <context context-type="linenumber">24,25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4316080311286698488" datatype="html">
         <source>Comparador de Precios</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
-          <context context-type="linenumber">30,31</context>
+          <context context-type="linenumber">31,32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7922404467701065306" datatype="html">
         <source>Sucursales</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
-          <context context-type="linenumber">38,39</context>
+          <context context-type="linenumber">39,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2348141227335566885" datatype="html">
         <source>© 2024 Comparador de Precios. Todos los derechos reservados.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
-          <context context-type="linenumber">60,61</context>
+          <context context-type="linenumber">61,62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6895936040465108457" datatype="html">
         <source>Política de Privacidad</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
-          <context context-type="linenumber">63,64</context>
+          <context context-type="linenumber">64,65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2102097129970043508" datatype="html">
         <source>Términos de Servicio</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.html</context>
-          <context context-type="linenumber">64,65</context>
+          <context context-type="linenumber">65,66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8750516121799340993" datatype="html">
         <source>¡<x id="PH" equiv-text="product"/> fue agregado al carrito!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/pages/mainPage/main-page.component.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7096544546464981822" datatype="html">
@@ -565,13 +582,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main/services/cart.service.ts</context>
           <context context-type="linenumber">18</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7040508405366739107" datatype="html">
-        <source>Buscar productos...</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/components/barra-busqueda/barra-busqueda.component.html</context>
-          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
     </body>

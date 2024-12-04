@@ -70,7 +70,7 @@ export class SidebarComponent {
 
    getRouteSegments(): string[] {
     const lang = this._route.snapshot.params['lang'] || 'es-AR';
-    const routeSegments = [lang];
+    const routeSegments = [lang, 'productos'];
 
     const currentHeading = this.headings.find(h => h.headingId === this.selectedOptions.headingId);
 

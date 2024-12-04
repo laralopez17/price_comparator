@@ -27,6 +27,5 @@ export class ProductComponent {
   getImageUrl(productImage: string): string {
     return productImage ? `assets/images/${productImage}` : 'assets/placeholder.png';
   }
-
 }
 

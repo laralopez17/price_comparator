@@ -48,7 +48,6 @@ export class ProductDropdownComponent implements OnInit{
       const barcodes = this.products.map(p => p.productId).join(',');
       
       this.router.navigate([lang, 'comparador', localityId, barcodes]).then(() => {
-
         this.loaderService.complete();
       });
     });

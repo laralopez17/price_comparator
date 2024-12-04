@@ -12,9 +12,9 @@
       class="btn btn-primary" 
       [disabled]="cartService.isInCart(product.productId)" 
       [ngClass]="{'btn-disabled': cartService.isInCart(product.productId)}" 
-      (click)="addToCart()" 
-      i18n>
-    {{ cartService.isInCart(product.productId) ? 'Ya en el carrito' : 'Agregar al carrito' }}
+      (click)="addToCart()">
+    <ng-container *ngIf="cartService.isInCart(product.productId); else addToCartText" i18n>Ya en el carrito</ng-container>
+    <ng-template #addToCartText i18n>Agregar al carrito</ng-template>
   </button>
   </div>
 </div>

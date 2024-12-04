@@ -16,7 +16,10 @@ export const routes: Routes = [
         component: MainPageComponent,
         resolve: {categorias: headingsResolver},
         children: [
-            { path: 'bienvenida', component: WelcomeComponent },
+            {   
+                path: 'bienvenida', 
+                component: WelcomeComponent 
+            },
             {
                 path: 'comparador/:localityId/:barcodes',
                 component: ComparingTableComponent,
@@ -33,17 +36,17 @@ export const routes: Routes = [
                 resolve: {sucursales: branchesResolver}
             },
             {
-                path: ':heading/:category/:productType',
+                path: 'productos/:heading/:category/:productType',
                 component: ProductListComponent,
                 resolve: {productos: productsResolver}
             },
             {
-                path: ':heading/:category',
+                path: 'productos/:heading/:category',
                 component: ProductListComponent,
                 resolve: {productos: productsResolver}
             },
             {
-                path: ':heading',
+                path: 'productos/:heading',
                 component: ProductListComponent,
                 resolve: {productos: productsResolver}
             },

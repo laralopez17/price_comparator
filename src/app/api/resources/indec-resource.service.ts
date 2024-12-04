@@ -1,4 +1,4 @@
-import { Inject, Injectable, LOCALE_ID } from '@angular/core';
+import {Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -14,9 +14,7 @@ export class IndecResourceService {
 
   private apiUrl = `${environment.apiUrl}/indec`;
 
-  constructor(private _http: HttpClient /*,
-    @Inject(LOCALE_ID) private locale: string*/
-  ) {}
+  constructor(private _http: HttpClient) {}
 
   private getHeaders() {
     const locale = localStorage.getItem('locale_id') || 'es-AR';
@@ -50,7 +48,6 @@ export class IndecResourceService {
   }
 
   getBranchesBySuper(superId: number): Observable<IBranch[]> {
-    //superId = 2;
     return this._http.post<IBranch[]>(`${this.apiUrl}/info-sucursales-super`, superId, {
       headers: { 'Content-Type': 'application/json' }
   });
