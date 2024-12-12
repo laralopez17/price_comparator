@@ -9,6 +9,10 @@ public class ComparadorPreciosBean extends PrecioBean {
     private Integer isCheapest;
     private Double totalPrices;
     private Integer isCheapestWProducts;
+    private Integer hasPriceChanged;
+    private Double diferencePerc;
+    private Integer isPositive;
+    private Integer hasPriceChangedTotal;
 
     public Integer getSuperId() {
         return superId;
@@ -71,4 +75,31 @@ public class ComparadorPreciosBean extends PrecioBean {
     public void setIsCheapestWProducts(Integer isCheapestWProducts) {
         this.isCheapestWProducts = isCheapestWProducts;
     }
+
+    public boolean hasPriceChanged() { return hasPriceChanged != null && hasPriceChanged == 1; }
+
+    public void setHasPriceChanged(Integer hasPriceChanged) {
+        this.hasPriceChanged = hasPriceChanged;
+    }
+
+    public boolean isPositive() { return isPositive != null && isPositive == 1; }
+
+    public void setIsPositive(Integer isPositive) {
+        this.isPositive = isPositive;
+    }
+
+    public Double getDiferencePerc() {
+        return diferencePerc;
+    }
+
+    public void setDiferencePerc(Double diferencePerc) {
+        this.diferencePerc = diferencePerc;
+    }
+
+    public boolean hasPriceChangedTotal() { return hasPriceChangedTotal != null && hasPriceChangedTotal == 1; }
+
+    public void setHasPriceChangedTotal(Integer hasPriceChangedTotal) {
+        this.hasPriceChangedTotal = hasPriceChangedTotal;
+    }
+
 }

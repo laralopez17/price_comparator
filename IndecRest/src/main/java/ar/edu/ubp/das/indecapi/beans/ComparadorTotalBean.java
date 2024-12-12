@@ -6,6 +6,7 @@ public class ComparadorTotalBean {
     private Double totalPrices;
     private String superName;
     private Boolean cheapestWProducts;
+    private Boolean priceChangedTotal;
 
     public Integer getSuperId() {
         return superId;
@@ -45,6 +46,14 @@ public class ComparadorTotalBean {
 
     public void setCheapestWProducts(Boolean cheapestWProducts) {
         this.cheapestWProducts = cheapestWProducts;
+    }
+
+    public Boolean isPriceChangedTotal() {
+        return priceChangedTotal;
+    }
+
+    public void setPriceChangedTotal(Boolean priceChangedTotal) {
+        this.priceChangedTotal = priceChangedTotal;
     }
 }
 

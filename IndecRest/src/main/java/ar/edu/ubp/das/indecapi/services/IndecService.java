@@ -110,6 +110,9 @@ public class IndecService {
                                 priceResponse.setSuperName(precio.getSuperName());
                                 priceResponse.setCheapest(precio.isCheapest());
                                 priceResponse.setCheapestWProducts(precio.isCheapestWProducts());
+                                priceResponse.setPriceChanged(precio.hasPriceChanged());
+                                priceResponse.setDiferencePerc(precio.getDiferencePerc());
+                                priceResponse.setPositive(precio.isPositive());
                                 return priceResponse;
                             })
                             .collect(Collectors.toList());
@@ -137,6 +140,7 @@ public class IndecService {
                             totalResponse.setTotalPrices(p.getTotalPrices());
                             totalResponse.setSuperName(p.getSuperName());
                             totalResponse.setCheapestWProducts(p.isCheapestWProducts());
+                            totalResponse.setPriceChangedTotal(p.hasPriceChangedTotal());
                             return totalResponse;
                         },
                         (total1, total2) -> total1
