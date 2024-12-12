@@ -7,8 +7,10 @@ This repository hosts the code for the final project in Advanced Software Design
 The price comparison platform allows users to:
 - Browse categories of products from the basic basket.
 - Select products and add them to a virtual shopping cart.
+![Screenshot 2024-12-03 230532](https://github.com/user-attachments/assets/5ad33f98-a7c7-44d8-9d5f-fe17730a7906)
 - Specify their province and locality to filter available supermarkets.
 - Compare prices of selected products across supermarkets and view a comparison table highlighting the supermarket with the most affordable prices.
+![Screenshot 2024-12-03 232616](https://github.com/user-attachments/assets/2c6c7ae9-f650-4689-bbe6-50e2db5b1e45)
 
 Additionally, users can view the locations of each supermarket's branches within their selected locality.
 
@@ -18,6 +20,7 @@ Additionally, users can view the locations of each supermarket's branches within
 - **Virtual Shopping Cart**: Users can add or remove products from their cart before comparing prices.
 - **Comparison Table**: The platform provides a table displaying price comparisons and highlights the supermarket offering the lowest prices.
 - **Location Search**: Users can locate nearby supermarket branches based on their selected province and locality.
+![Screenshot 2024-12-03 232635](https://github.com/user-attachments/assets/ba7e9725-3734-46a4-842c-68cebdfd360c)
 - **Internationalization**: Available in both Spanish and English.
 - **Responsive Design**: Optimized for mobile and desktop devices.
 
@@ -71,7 +74,8 @@ Additionally, users can view the locations of each supermarket's branches within
 
 ```bash
 git clone https://github.com/laralopez17/price_comparator.git
-cd price_comparator
+cd price_comparator![Screenshot 2024-12-03 230532](https://github.com/user-attachments/assets/27c17f28-92fe-4cc5-bc0b-cb541801c5f8)
+
 ```
 
 ### 2. Database setup
