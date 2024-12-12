@@ -1,0 +1,70 @@
+<app-splash *ngIf="showSplash"></app-splash>
+<div *ngIf="!showSplash" class="main-page d-flex flex-column min-vh-100">
+  <div class="d-flex" id="wrapper">
+    <div id="page-content-wrapper" class="flex-fill">
+      <!-- Navbar con botones para la sidebar y el dropdown -->
+      <nav class="navbar navbar-light bg-light border-bottom d-flex justify-content-between align-items-center">
+        
+        <!-- Botón para mostrar menú de idiomas -->     
+        <button class="bi bi-globe2" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+          <li>
+            <a class="dropdown-item" (click)="changeLanguage('es-AR')">Español</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="changeLanguage('en')">English</a>
+          </li>
+        </ul>
+
+          <!-- Sidebar a la izquierda -->
+          <app-sidebar [(active)]="activeSideBar"></app-sidebar>
+
+          <!-- Botón para mostrar/ocultar la sidebar -->
+          <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleSideBar()">
+            <span class="bi bi-list" i18n> Categorías</span>
+          </button>
+          <!-- Logo del INDEC -->
+           <a href="#">
+            <img src="assets/indec-logo.png" alt="Logo INDEC" class="indec-logo">
+           </a>
+
+        <a href="#" class="navbar-title" ><h1 i18n>Comparador de Precios</h1></a>
+        
+        <div class="search-bar">
+          <app-barra-busqueda></app-barra-busqueda>
+        </div>
+      
+
+        <button class="navbar-toggler" type="button" (click)="toggleBranches()">
+          <span class="bi bi-building" i18n>Sucursales</span>
+        </button>
+        <!-- Botón para mostrar/ocultar el dropdown -->
+        <button class="navbar-toggler" type="button" aria-label="Opciones" (click)="toggleDropDown()">
+          <span class="bi bi-cart"></span>
+        </button>
+        <app-product-dropdown [(active)]="activeDropDown"></app-product-dropdown>
+
+      </nav>
+
+      <div *ngIf="showAlert" class="global-alert alert-success" role="alert" i18n>
+        {{ alertMessage }}
+      </div>
+
+      <div class="content flex-fill">
+        <router-outlet></router-outlet>
+      </div>
+      
+    </div>
+    <footer class="bg-light text-center text-lg-start mt-auto py-3">
+      <div class="container">
+        <div class="text-center">
+          <span class="text-muted" i18n>© 2024 Comparador de Precios. Todos los derechos reservados.</span>
+        </div>
+        <div class="text-center mt-2">
+          <a href="#" class="text-decoration-none me-3" i18n>Política de Privacidad</a>
+          <a href="#" class="text-decoration-none" i18n>Términos de Servicio</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 56px;
+  width: 23rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  display: none;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #f1f1f1 #ffffff;
+  &.show {
+    display: block; // Se muestra cuando está activo
+  }
+
+  .dropdown-heading {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #ffffff72;
+    background-color: #1c599771;
+  }
+
+  .list-group {
+    width: 22rem;
+    max-height: 70vh;
+     /* Oculta el scroll horizontal */
+    padding-right: 0.5rem;
+  }
+
+  .dropdown-menu::-webkit-scrollbar {
+    width: 6px; /* Ancho del scroll */
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f1f1f1;
+      font-weight: bold;
+    }
+
+    a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      flex-grow: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-right: 0.5rem;
+    }
+
+    button {
+      border: none;
+      background-color: transparent;
+      color: #ac1e2c;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #ec2438;
+      }
+    }
+  }
+
+  .text-center {
+    padding: 1rem;
+  }
+
+  button.btn-primary {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+

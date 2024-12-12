@@ -1,0 +1,13 @@
+<h3 i18n>Seleccione los productos a comparar...</h3>
+
+<div *ngIf="(products | filterProducts: searchTerm).length === 0" class="no-products-message text-center">
+  <p i18n>No se encontraron productos que coincidan con tu búsqueda.</p>
+</div>
+
+<div class="item-list">
+  <app-product 
+    *ngFor="let product of products | filterProducts: searchTerm" 
+    [product]="product" 
+    (addedProduct)="onProductAdded(product.productName)">
+  </app-product>
+</div>

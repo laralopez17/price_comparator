@@ -59,5 +59,3 @@ Additionally, users can view the locations of each supermarket's branches within
 ## Contributors
 
 - Project developed by students at Universidad Blas Pascal.
-
-
