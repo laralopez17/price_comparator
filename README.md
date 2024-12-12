@@ -50,11 +50,114 @@ Additionally, users can view the locations of each supermarket's branches within
 - **Performance**: Operations should complete within 15 seconds.
 - **Security**: Robust data protection and secure token authentication.
 
-## Usage
+#Usage
 
-1. Clone this repository.
-2. Follow the instructions in the `docs/setup.md` for environment setup.
-3. Run the application locally or on your server.
+## Requirements
+
+### Backend:
+- **Java 11 or higher**.
+- **Maven** for dependency management and execution.
+- **SQL Server database** (one for INDEC and one for each supermarket).
+- **API Keys** for accessing supermarket APIs.
+
+### Frontend:
+- **Node.js** (latest LTS version recommended).
+- **Angular CLI** to run the application locally.
+- **npm** for managing dependencies.
+
+## Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/laralopez17/price_comparator.git
+cd price_comparator
+```
+
+### 2. Database setup
+
+You need to create 5 databases:
+- **1 for INDEC**
+- **4 for the supermarkets** (since all supermarket databases have the same tables)
+
+Inside this repository, you'll find the scripts to create the tables for both INDEC and the supermarkets. Additional scripts are also available to execute the necessary procedures.
+
+**Note:** You don't need to have data in the INDEC tables `sucursales` and `productos_sucursales` as they can be automatically populated using the batch processes.
+
+### 3. Backend (Java)
+
+#### Dependencies:
+
+The backend is developed in **Java** and uses **Maven** for dependency management. To run the backend, you need to have **Maven** installed.
+
+If you're running the project for the first time, run the following command to install the dependencies:
+
+```bash
+mvn install
+```
+
+#### Configuration in `application.properties`:
+
+Inside the `src/main/resources/application.properties` file of each supermarket and INDEC, you will need to configure:
+
+- **Database connection** (username, password and db name).
+- **API Key** for the supermarkets (must be stored in the `servicios_supermercados` table).
+
+Example configuration:
+
+```properties
+spring.application.name=Super4
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=super4;encrypt=false
+server.port=8080
+spring.datasource.username=xxxx
+spring.datasource.password=xxxx
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+api.security.key=xxxx
+```
+
+### 4. Frontend (Angular)
+
+#### Install Dependencies:
+
+Inside the `frontend` folder, run the following command to install the **Node.js** dependencies:
+
+```bash
+cd frontend
+npm install
+```
+
+#### Running Locally:
+
+To run the frontend in development mode, the INDEC APIs need to be running (the supermarket APIs are not required for frontend).
+
+Depending on the language you want to run the application in, use one of these commands:
+
+- For Spanish (on port 4200):
+  ```bash
+  npm run start-es
+  ```
+
+- For English (on port 4201):
+  ```bash
+  npm run start-en
+  ```
+
+### 5. Running Batch Processes
+
+Batch processes should be executed before starting the frontend, as they fetch the branch and product price data.
+
+- **EjecutarInformacion:** This process retrieves branch and product data.
+- **EjecutarPrecios:** This process fetches product prices from supermarkets.
+
+### 6. Using the Application
+
+Once you have the databases configured and batch processes executed, you can access the frontend application and compare product prices.
+
+#### To start the application, follow these steps:
+
+1. Ensure the database is running with data in the necessary tables.
+2. Run the batch processes (you can do this before starting the frontend).
+3. Start the frontend using the appropriate commands for the language you're using.
 
 ## Contributors
 
