@@ -1,168 +1,205 @@
-# Price Comparison Platform
+# Price Comparator Platform
 
-This repository hosts the code for the final project in Advanced Software Design (DAS) at Universidad Blas Pascal. The project involves developing a price comparison platform to be integrated into the National Institute of Statistics and Census (INDEC) portal. This application allows users to compare prices for essential goods across various supermarkets, helping users make informed purchasing decisions.
+Full-stack price comparison platform built with Java, Spring Boot, Angular and SQL Server.
 
-## Project Overview
+This project was developed as a final project for Advanced Software Design at Universidad Blas Pascal. It simulates a platform where users can compare prices for essential goods across multiple supermarkets and find the most affordable option based on their selected location.
 
-The price comparison platform allows users to:
-- Browse categories of products from the basic basket.
-- Select products and add them to a virtual shopping cart.
-![Screenshot 2024-12-03 230532](https://github.com/user-attachments/assets/5ad33f98-a7c7-44d8-9d5f-fe17730a7906)
-- Specify their province and locality to filter available supermarkets.
-- Compare prices of selected products across supermarkets and view a comparison table highlighting the supermarket with the most affordable prices.
-![Screenshot 2024-12-03 232616](https://github.com/user-attachments/assets/2c6c7ae9-f650-4689-bbe6-50e2db5b1e45)
+## Overview
 
-Additionally, users can view the locations of each supermarket's branches within their selected locality.
+The application allows users to browse products, add items to a virtual shopping cart, select their province and locality, and compare prices across different supermarkets.
 
-## Key Features
+It also includes supermarket branch information and daily price update processes, simulating how multiple supermarket systems could publish product and branch data to a central platform.
 
-- **Daily Price Updates**: Supermarkets submit updated prices each day, ensuring users access the latest pricing information.
-- **Virtual Shopping Cart**: Users can add or remove products from their cart before comparing prices.
-- **Comparison Table**: The platform provides a table displaying price comparisons and highlights the supermarket offering the lowest prices.
-- **Location Search**: Users can locate nearby supermarket branches based on their selected province and locality.
-![Screenshot 2024-12-03 232635](https://github.com/user-attachments/assets/ba7e9725-3734-46a4-842c-68cebdfd360c)
-- **Internationalization**: Available in both Spanish and English.
-- **Responsive Design**: Optimized for mobile and desktop devices.
+## Key features
 
-## Technical Requirements
+* Product browsing by category
+* Virtual shopping cart
+* Price comparison across supermarkets
+* Lowest-price highlighting
+* Province and locality filtering
+* Supermarket branch information
+* Daily product and price update processes
+* Spanish and English frontend support
+* Responsive Angular UI
+* REST and SOAP service integration
+* Token-based service authentication
 
-- **Backend**: Java, Spring Boot, ensuring scalability and maintainability.
-- **Frontend**: Angular 18 framework for a dynamic and responsive user experience.
-- **Database**: SQL Server 2019 or later.
-- **Web Services**: Supports REST and SOAP, allowing flexible data integration with supermarket systems.
-- **Security**: Data transmission between INDEC and supermarkets is secured via token-based authentication.
+## Tech stack
 
-## Functional Requirements
+### Backend
 
-1. **Publish Prices**: Supermarkets provide a daily list of product prices, specific to each branch.
-2. **Branch Information**: Supermarkets publish details of their branches, including contact information, hours, and services.
-3. **Product Browsing**: Users can explore products by categories.
-4. **Add to Cart**: Users select products for comparison and add them to their virtual cart.
-5. **Remove from Cart**: Users can remove items from their cart.
-6. **Location Selection**: Users specify their location to filter relevant supermarket branches.
-7. **Compare Prices**: The platform compares selected product prices across supermarkets.
-8. **View Branch Locations**: Users can access branch locations in their selected locality.
-9. **Daily Information Update**: System receives daily updates to maintain accuracy.
+* Java
+* Spring Boot
+* Maven
+* REST APIs
+* SOAP services
+* SQL Server
 
-## Non-Functional Requirements
+### Frontend
 
-- **Responsiveness**: Adaptable UI for mobile and desktop.
-- **Internationalization**: Available in Spanish and English.
-- **Scalability**: Built to handle an increasing number of users and data volume.
-- **Availability**: High availability to ensure consistent 24/7 access.
-- **Performance**: Operations should complete within 15 seconds.
-- **Security**: Robust data protection and secure token authentication.
+* Angular
+* TypeScript
+* HTML / CSS
 
-#Usage
+### Database
 
-## Requirements
+* SQL Server
+* Separate databases for INDEC and supermarket systems
 
-### Backend:
-- **Java 11 or higher**.
-- **Maven** for dependency management and execution.
-- **SQL Server database** (one for INDEC and one for each supermarket).
-- **API Keys** for accessing supermarket APIs.
+## Architecture
 
-### Frontend:
-- **Node.js** (latest LTS version recommended).
-- **Angular CLI** to run the application locally.
-- **npm** for managing dependencies.
+The system is organized around a central INDEC service and multiple supermarket services.
+
+Each supermarket publishes product, branch and price information. The central platform consumes that information and exposes it to the frontend so users can compare prices by location.
+
+```mermaid
+flowchart LR
+  Supermarket1[Supermarket API 1] --> INDEC[Central INDEC Service]
+  Supermarket2[Supermarket API 2] --> INDEC
+  Supermarket3[Supermarket API 3] --> INDEC
+  Supermarket4[Supermarket API 4] --> INDEC
+
+  INDEC --> Database[(SQL Server)]
+  Frontend[Angular Frontend] --> INDEC
+  User[User] --> Frontend
+```
+
+## Main user flow
+
+1. User selects a province and locality.
+2. User browses available products.
+3. User adds products to a virtual cart.
+4. The system compares prices across supermarkets.
+5. The frontend displays a comparison table and highlights the cheapest option.
 
 ## Setup
 
-### 1. Clone the repository
+### Prerequisites
+
+* Java 11+
+* Maven
+* Node.js
+* Angular CLI
+* SQL Server 2019+
+* npm
+
+### Clone the repository
 
 ```bash
 git clone https://github.com/laralopez17/price_comparator.git
-cd price_comparator![Screenshot 2024-12-03 230532](https://github.com/user-attachments/assets/27c17f28-92fe-4cc5-bc0b-cb541801c5f8)
-
+cd price_comparator
 ```
 
-### 2. Database setup
+### Database setup
 
-You need to create 5 databases:
-- **1 for INDEC**
-- **4 for the supermarkets** (since all supermarket databases have the same tables)
+The project uses multiple SQL Server databases:
 
-Inside this repository, you'll find the scripts to create the tables for both INDEC and the supermarkets. Additional scripts are also available to execute the necessary procedures.
+* One central database for INDEC
+* One database for each supermarket service
 
-**Note:** You don't need to have data in the INDEC tables `sucursales` and `productos_sucursales` as they can be automatically populated using the batch processes.
+Database scripts are included in the repository to create the required tables and stored procedures.
 
-### 3. Backend (Java)
+You will need to configure database connection values and API keys in each backend service.
 
-#### Dependencies:
+Example configuration:
 
-The backend is developed in **Java** and uses **Maven** for dependency management. To run the backend, you need to have **Maven** installed.
+```properties
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=super4;encrypt=false
+spring.datasource.username=your_user
+spring.datasource.password=your_password
+api.security.key=your_api_key
+```
 
-If you're running the project for the first time, run the following command to install the dependencies:
+### Backend setup
+
+Each backend service is a Maven project.
+
+From the corresponding backend folder, install dependencies:
 
 ```bash
 mvn install
 ```
 
-#### Configuration in `application.properties`:
+Then run the required Spring Boot services.
 
-Inside the `src/main/resources/application.properties` file of each supermarket and INDEC, you will need to configure:
-
-- **Database connection** (username, password and db name).
-- **API Key** for the supermarkets (must be stored in the `servicios_supermercados` table).
-
-Example configuration:
-
-```properties
-spring.application.name=Super4
-spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=super4;encrypt=false
-server.port=8080
-spring.datasource.username=xxxx
-spring.datasource.password=xxxx
-spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
-api.security.key=xxxx
-```
-
-### 4. Frontend (Angular)
-
-#### Install Dependencies:
-
-Inside the `frontend` folder, run the following command to install the **Node.js** dependencies:
+### Frontend setup
 
 ```bash
 cd frontend
 npm install
 ```
 
-#### Running Locally:
+Run the frontend in Spanish:
 
-To run the frontend in development mode, the INDEC APIs need to be running (the supermarket APIs are not required for frontend).
+```bash
+npm run start-es
+```
 
-Depending on the language you want to run the application in, use one of these commands:
+Run the frontend in English:
 
-- For Spanish (on port 4200):
-  ```bash
-  npm run start-es
-  ```
+```bash
+npm run start-en
+```
 
-- For English (on port 4201):
-  ```bash
-  npm run start-en
-  ```
+## Project structure
 
-### 5. Running Batch Processes
+```text
+backend/
+  IndecRest/
+  Super1/
+  Super2/
+  Super3/
+  Super4/
 
-Batch processes should be executed before starting the frontend, as they fetch the branch and product price data.
+frontend/
+  Angular application
 
-- **EjecutarInformacion:** This process retrieves branch and product data.
-- **EjecutarPrecios:** This process fetches product prices from supermarkets.
+database scripts/
+  SQL Server setup scripts
+```
 
-### 6. Using the Application
+Adjust folder names above if the repository structure changes.
 
-Once you have the databases configured and batch processes executed, you can access the frontend application and compare product prices.
+## Screenshots
 
-#### To start the application, follow these steps:
+* Product browsing
 
-1. Ensure the database is running with data in the necessary tables.
-2. Run the batch processes (you can do this before starting the frontend).
-3. Start the frontend using the appropriate commands for the language you're using.
+![Screenshot 2024-12-03 230532](https://github.com/user-attachments/assets/5ad33f98-a7c7-44d8-9d5f-fe17730a7906)
+* Shopping cart
+  
+![Screenshot 2024-12-03 232616](https://github.com/user-attachments/assets/2c6c7ae9-f650-4689-bbe6-50e2db5b1e45)
+* Price comparison table
+  
+![Screenshot 2024-12-03 232635](https://github.com/user-attachments/assets/ba7e9725-3734-46a4-842c-68cebdfd360c)
+* Branch location information
+  
+![Screenshot 2024-12-03 230532](https://github.com/user-attachments/assets/27c17f28-92fe-4cc5-bc0b-cb541801c5f8)
 
-## Contributors
+## What this project demonstrates
 
-- Project developed by students at Universidad Blas Pascal.
+* Java / Spring Boot backend development
+* Angular frontend development
+* SQL Server database design
+* REST and SOAP service integration
+* Multi-service architecture
+* Token-based API security
+* Full-stack software design
+* Functional and non-functional requirements analysis
+
+## Limitations
+
+This was an academic project and is not production deployed.
+
+Potential improvements:
+
+* Docker Compose setup for all services
+* Centralized configuration
+* Automated database seed scripts
+* Integration tests
+* CI pipeline
+* Improved API documentation
+* Cloud deployment
+
+## Status
+
+Academic full-stack project. Public for portfolio purposes.
